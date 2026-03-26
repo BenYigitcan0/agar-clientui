@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", (_0x42fa1b) => {
     "https://www.google.com/recaptcha/api.js?render=6LcnrKQUAAAAADohV5Cksikz89WSP-ZPHNA7ViZm",
   );
 
-  console.log("Game is ready");
+  // console.log("Game is ready");
   appendHtmlChild();
   setserver(CONNECTION_URL);
 });
