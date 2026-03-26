@@ -109,21 +109,21 @@ body {
     align-items: flex-start;
 }
 
-.main-login-area-left {
+/* .main-login-area-left {
     width: 250px;
     background-color: rgba(0,0,0,0.4);
-}
+} */
 
-.main-login-area-center {
+/* .main-login-area-center {
     width: 450px;
     background-color: rgba(0,0,0,0.4);
     padding: 1rem;
-}
+} */
 
-.main-login-area-right {
+/* .main-login-area-right {
     width: 250px;
     background-color: rgba(0,0,0,0.4);
-}
+} */
 
 .main-login-area-left-tab-area {
     width: 100%;
