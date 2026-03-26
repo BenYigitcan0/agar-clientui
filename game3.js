@@ -28,8 +28,17 @@ async function test() {
     ${code}
   });
 `);*/
-const fn = new Function(code);
-fn();
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+const safeAPI = {
+  canvas,
+  ctx,
+  log: console.log
+};
+
+const fn = new Function("api", code);
+fn(safeAPI);
         //runCode(code);
       } else {
         console.log("Geçersiz key");
