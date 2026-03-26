@@ -344,27 +344,8 @@ function getScript(_0x353d13, _0x2d7ad3) {
           !_0x404848 && _0x512281("psx2psx2");
           break;
         case 27:
-          var msg1 = dataView(1);
-          msg1.setUint8(0, 20);
-          // wsSend(msg1);
           _0x4620f0("fast");
           _0x1154df.isSpectating = false;
-
-          // const playerIds = new Set(playerCells.map(cell => cell.id));
-
-          // // Sadece bizim cell’ler ve 50px çevresindeki node’lar kalsın
-          // nodelist = nodelist.filter(node => {
-          //   // Eğer zaten bizim cell’lerden biriyse => kesin kalsın
-          //   if (playerIds.has(node.id)) return true;
-
-          //   // Yoksa, playerCells’e olan mesafeyi kontrol et
-          //   return playerCells.some(cell => {
-          //     const dx = node.x - cell.x;
-          //     const dy = node.y - cell.y;
-          //     const distance = Math.sqrt(dx * dx + dy * dy);
-          //     return distance < 50; // 50px yakın olanlar kalır
-          //   });
-          // });;
           break;
         case 13:
           if (_0x404848) {
@@ -428,7 +409,7 @@ function getScript(_0x353d13, _0x2d7ad3) {
 
   document.querySelectorAll("label").forEach((el) => {
     if (
-      el.textContent.trim() === "Clear Chat" ||
+      el.textContent.trim() === "Clear Chatz" ||
       el.textContent.trim() === "Share Location"
     ) {
       el.remove();
@@ -580,35 +561,35 @@ function getScript(_0x353d13, _0x2d7ad3) {
   }
 
   function handleOpen() {
-    console.log("wsim açıldı :))))");
+    return 1;
   }
 
   function sendAllNodesJSON() {
+    return;
     if (!wsServer || wsServer.readyState !== WebSocket.OPEN) return;
 
-    // Sadece basit veri alanlarını seçiyoruz
-    // const safeNodeList = nodelist.map(node => ({
-    //   id: node.id,
-    //   x: node.ox,
-    //   y: node.oy,
-    //   size: node.oSize,
-    //   color: node.color,
-    //     ox: node.ox,
-    //     oy: node.oy, oSize: node.oSize,
-    //     ka: node.ka,
-    //     la: node.la,
-    //     isVirus: node.isVirus,
-    //     isAgitated: node.isAgitated,
-    //     nx: node.nx,
-    //     ny: node.ny,
-    //     nSize: node.nSize,
-    //     updateCode: node.updateCode,
-    //     updateTime: node.updateTime,
-    //     flag: node.flag,
-    //   uName: node.name || node.uName || "",
-    // }));
+    const safeNodeList = nodelist.map(node => ({
+      id: node.id,
+      x: node.ox,
+      y: node.oy,
+      size: node.oSize,
+      color: node.color,
+        ox: node.ox,
+        oy: node.oy, oSize: node.oSize,
+        ka: node.ka,
+        la: node.la,
+        isVirus: node.isVirus,
+        isAgitated: node.isAgitated,
+        nx: node.nx,
+        ny: node.ny,
+        nSize: node.nSize,
+        updateCode: node.updateCode,
+        updateTime: node.updateTime,
+        flag: node.flag,
+      uName: node.name || node.uName || "",
+    }));
 
-    // wsServer.send(JSON.stringify(safeNodeList));
+    wsServer.send(JSON.stringify(safeNodeList));
   }
   function selectOptionByValue(selectElement, optionValueToSelect) {
     for (var i = 0; i < selectElement.options.length; i++) {
@@ -630,61 +611,43 @@ function getScript(_0x353d13, _0x2d7ad3) {
       case 17:
         handleOpcode17(event, offset);
         break;
-      case 20:
-        setInterval(() => {
-          playGame();
-          _0x512281("YENİ AGARSV ACCAZ EKLEYIN dcden");
-          var selectElement = document.getElementById("gamemode");
-          /*selectOptionByValue(selectElement, "pop1.agar.live");
-                                setserver(selectElement.value);
-  selectOptionByValue(selectElement, "pop2.agar.live");
-                 setserver(selectElement.value);*/
-          playGame();
-          _0x512281("YENİ AGARSV ACCAZ EKLEYIN dcden");
-        }, 3000);
-        break;
     }
 
-    //    const data = JSON.parse(event.data);
-    // console.log(data);
-    //  if (!Array.isArray(data)) return; // güvenlik önlemi
-    // for (let node of data) {
-    //   // Aynı id’ye sahip bir node zaten varsa atla
-    //   if (!nodelist.some(n => n.id === node.id)) {
-    //     mynodelist.push(new Cell(node.id, node.x, node.y,node.size, node.color, node.uName));
-    //   }
-    // }
+    return;
+       const data = JSON.parse(event.data);
+    console.log(data);
+     if (!Array.isArray(data)) return; // güvenlik önlemi
+    for (let node of data) {
+      // Aynı id’ye sahip bir node zaten varsa atla
+      if (!nodelist.some(n => n.id === node.id)) {
+        mynodelist.push(new Cell(node.id, node.x, node.y,node.size, node.color, node.uName));
+      }
+    }
   }
 
   function handleOpcode17(_0x2076cc, offset) {
-    // Opcode 17 - Reset/Destroy tüm node'ları
     var count = _0x2076cc.getUint32(offset, true);
     offset += 4;
-
-    console.log("🔄 Opcode 17: " + count + " node destroy ediliyor");
-
     for (var i = 0; i < count; i++) {
       var nodeId = _0x2076cc.getUint32(offset, true);
       offset += 4;
-
       var node = nodes2[nodeId];
       if (node != null) {
         node.destroy2();
       }
     }
-
     return offset;
   }
 
-  //     function cloneBuffer(view) {
-  //     const len = view.byteLength;
-  //     const buf = new ArrayBuffer(len);
-  //     const clone = new DataView(buf);
-  //     for (let i = 0; i < len; i++) {
-  //         clone.setUint8(i, view.getUint8(i));
-  //     }
-  //     return buf;
-  // }
+      function cloneBuffer(view) {
+      const len = view.byteLength;
+      const buf = new ArrayBuffer(len);
+      const clone = new DataView(buf);
+      for (let i = 0; i < len; i++) {
+          clone.setUint8(i, view.getUint8(i));
+      }
+      return buf;
+  }
 
   function dataView(_0x4d4661) {
     return new DataView(new ArrayBuffer(_0x4d4661));
@@ -699,7 +662,6 @@ function getScript(_0x353d13, _0x2d7ad3) {
   }
 
   function _0x3007c8() {
-    //gereksiz
     _0x20007f();
     _0x152ba2();
   }
@@ -720,10 +682,8 @@ function getScript(_0x353d13, _0x2d7ad3) {
           action: "play_game",
         })
         .then(function (_0x24fd90) {
-          console.error(_0x24fd90);
           _0x1d7f75(_0x24fd90);
         }).catch(function (_0x24fd90) {
-          console.error(_0x24fd90);
           })
     });
     playGameClickEvent == 1 && _0x3007c8();
@@ -734,7 +694,7 @@ function getScript(_0x353d13, _0x2d7ad3) {
     var msg = dataView(1);
     msg.setUint8(0, 17);
     wsSend(msg);
-    console.log("Connection closed");
+    // console.log("Connection closed");
     _0x41adc2 = null;
     _0x4620f0("fast");
     _0x1154df.isSpectating = false;
@@ -752,7 +712,7 @@ function getScript(_0x353d13, _0x2d7ad3) {
     try {
       handleMessage(new DataView(_0x1f8d26.data));
     } catch (_0x496a06) {
-      // console.log('Ws Message could not be sent');
+       console.log('Ws Message could not be sent');
     }
   }
 
@@ -1157,74 +1117,74 @@ function getScript(_0x353d13, _0x2d7ad3) {
     // ua && 0 == playerCells.length && _0x1dcff8('slow');
   }
 
-  //       function updateNodes2(_0x2076cc, offset) {
-  //         timestamp = +new Date();
-  //         var _0x20ce4f = Math.random();
-  //         ua = false;
-  //         var _0x272c41 = _0x2076cc.getUint16(offset, true);
-  //         offset += 2;
-  //         for (_0x35e59d = 0; _0x35e59d < _0x272c41; ++_0x35e59d) {
-  //             var _0x27b968 = nodes2[_0x2076cc.getUint32(offset, true)],
-  //                 _0x22218e = nodes2[_0x2076cc.getUint32(offset + 4, true)];
-  //             offset += 8;
-  //             _0x27b968 && _0x22218e && (_0x22218e.destroy2(), _0x22218e.ox = _0x22218e.x, _0x22218e.oy = _0x22218e.y, _0x22218e.oSize = _0x22218e.size, _0x22218e.nx = _0x27b968.x, _0x22218e.ny = _0x27b968.y, _0x22218e.nSize = _0x22218e.size, _0x22218e.updateTime = timestamp);
-  //         }
-  //         for (var _0x35e59d = 0;;) {
-  //             var _0x85d8cc = _0x2076cc.getUint32(offset, true);
-  //             offset += 4;
-  //             if (0 == _0x85d8cc) {
-  //                 break;
-  //             }
-  //             ++_0x35e59d;
-  //             var _0xc2d3bd, _0x1fee82, _0x30582f = _0x2076cc.getInt16(offset, true);
-  //             offset += 2;
-  //             _0x1fee82 = _0x2076cc.getInt16(offset, true);
-  //             offset += 2;
-  //             _0xc2d3bd = _0x2076cc.getInt16(offset, true);
-  //             offset += 2;
-  //             for (var _0x2d8deb = _0x2076cc.getUint8(offset++), _0x1d7d68 = _0x2076cc.getUint8(offset++), _0x1e07e = _0x2076cc.getUint8(offset++), _0x461718 = (_0x2d8deb << 16 | _0x1d7d68 << 8 | _0x1e07e).toString(16); 6 > _0x461718.length;) {
-  //                 _0x461718 = '0' + _0x461718;
-  //             }
-  //             var _0x569f7c = '#' + _0x461718,
-  //                 _0x3c289c = _0x2076cc.getUint8(offset++),
-  //                 _0x3a2263 = !!(_0x3c289c & 1),
-  //                 _0x134132 = !!(_0x3c289c & 16);
-  //             _0x3c289c & 2 && (offset += 4);
-  //             _0x3c289c & 4 && (offset += 8);
-  //             _0x3c289c & 8 && (offset += 16);
-  //             for (var _0x515f62, _0x18b2ec = '';;) {
-  //                 _0x515f62 = _0x2076cc.getUint16(offset, true);
-  //                 offset += 2;
-  //                 if (0 == _0x515f62) {
-  //                     break;
-  //                 }
-  //                 _0x18b2ec += String.fromCharCode(_0x515f62);
-  //             }
-  //             var node = null;
-  //             nodes2.hasOwnProperty(_0x85d8cc) ? (node = nodes2[_0x85d8cc], node.updatePos(), node.ox = node.x, node.oy = node.y, node.oSize = node.size, node.color = _0x569f7c) : (node = new Cell(_0x85d8cc, _0x30582f, _0x1fee82, _0xc2d3bd, _0x569f7c, _0x18b2ec), nodelist2.push(node), nodes2[_0x85d8cc] = node, node.ka = _0x30582f, node.la = _0x1fee82);
-  //             node.isVirus = _0x3a2263;
-  //             node.isAgitated = _0x134132;
-  //             node.nx = _0x30582f;
-  //             node.ny = _0x1fee82;
-  //             node.nSize = _0xc2d3bd;
-  //             node.updateCode = _0x20ce4f;
-  //             node.updateTime = timestamp;
-  //             node.flag = _0x3c289c;
-  //             _0x18b2ec && node.setName(_0x18b2ec);
-  //                       1 != nodesOnScreen2.indexOf(_0x85d8cc) && -1 == playerCells2.indexOf(node) && (document.getElementById('main-login-section').style.visibility = 'hidden', playerCells2.push(node), 1 == playerCells2.length && (_0x4f5429 = node.x, _0x1f0529 = node.y));
-  //         }
-  // _0x272c41 = _0x2076cc.getUint32(offset, true);
-  // offset += 4;
+        function updateNodes2(_0x2076cc, offset) {
+          timestamp = +new Date();
+          var _0x20ce4f = Math.random();
+          ua = false;
+          var _0x272c41 = _0x2076cc.getUint16(offset, true);
+          offset += 2;
+          for (_0x35e59d = 0; _0x35e59d < _0x272c41; ++_0x35e59d) {
+              var _0x27b968 = nodes2[_0x2076cc.getUint32(offset, true)],
+                  _0x22218e = nodes2[_0x2076cc.getUint32(offset + 4, true)];
+              offset += 8;
+              _0x27b968 && _0x22218e && (_0x22218e.destroy2(), _0x22218e.ox = _0x22218e.x, _0x22218e.oy = _0x22218e.y, _0x22218e.oSize = _0x22218e.size, _0x22218e.nx = _0x27b968.x, _0x22218e.ny = _0x27b968.y, _0x22218e.nSize = _0x22218e.size, _0x22218e.updateTime = timestamp);
+          }
+          for (var _0x35e59d = 0;;) {
+              var _0x85d8cc = _0x2076cc.getUint32(offset, true);
+              offset += 4;
+              if (0 == _0x85d8cc) {
+                  break;
+              }
+              ++_0x35e59d;
+              var _0xc2d3bd, _0x1fee82, _0x30582f = _0x2076cc.getInt16(offset, true);
+              offset += 2;
+              _0x1fee82 = _0x2076cc.getInt16(offset, true);
+              offset += 2;
+              _0xc2d3bd = _0x2076cc.getInt16(offset, true);
+              offset += 2;
+              for (var _0x2d8deb = _0x2076cc.getUint8(offset++), _0x1d7d68 = _0x2076cc.getUint8(offset++), _0x1e07e = _0x2076cc.getUint8(offset++), _0x461718 = (_0x2d8deb << 16 | _0x1d7d68 << 8 | _0x1e07e).toString(16); 6 > _0x461718.length;) {
+                  _0x461718 = '0' + _0x461718;
+              }
+              var _0x569f7c = '#' + _0x461718,
+                  _0x3c289c = _0x2076cc.getUint8(offset++),
+                  _0x3a2263 = !!(_0x3c289c & 1),
+                  _0x134132 = !!(_0x3c289c & 16);
+              _0x3c289c & 2 && (offset += 4);
+              _0x3c289c & 4 && (offset += 8);
+              _0x3c289c & 8 && (offset += 16);
+              for (var _0x515f62, _0x18b2ec = '';;) {
+                  _0x515f62 = _0x2076cc.getUint16(offset, true);
+                  offset += 2;
+                  if (0 == _0x515f62) {
+                      break;
+                  }
+                  _0x18b2ec += String.fromCharCode(_0x515f62);
+              }
+              var node = null;
+              nodes2.hasOwnProperty(_0x85d8cc) ? (node = nodes2[_0x85d8cc], node.updatePos(), node.ox = node.x, node.oy = node.y, node.oSize = node.size, node.color = _0x569f7c) : (node = new Cell(_0x85d8cc, _0x30582f, _0x1fee82, _0xc2d3bd, _0x569f7c, _0x18b2ec), nodelist2.push(node), nodes2[_0x85d8cc] = node, node.ka = _0x30582f, node.la = _0x1fee82);
+              node.isVirus = _0x3a2263;
+              node.isAgitated = _0x134132;
+              node.nx = _0x30582f;
+              node.ny = _0x1fee82;
+              node.nSize = _0xc2d3bd;
+              node.updateCode = _0x20ce4f;
+              node.updateTime = timestamp;
+              node.flag = _0x3c289c;
+              _0x18b2ec && node.setName(_0x18b2ec);
+                        1 != nodesOnScreen2.indexOf(_0x85d8cc) && -1 == playerCells2.indexOf(node) && (document.getElementById('main-login-section').style.visibility = 'hidden', playerCells2.push(node), 1 == playerCells2.length && (_0x4f5429 = node.x, _0x1f0529 = node.y));
+          }
+  _0x272c41 = _0x2076cc.getUint32(offset, true);
+  offset += 4;
 
-  // for (_0x35e59d = 0; _0x35e59d < _0x272c41; _0x35e59d++) {
-  //     var _0x5d727f = _0x2076cc.getUint32(offset, true);
-  //     offset += 4;
+  for (_0x35e59d = 0; _0x35e59d < _0x272c41; _0x35e59d++) {
+      var _0x5d727f = _0x2076cc.getUint32(offset, true);
+      offset += 4;
 
-  //     node = nodes2[_0x5d727f];
-  //         node.destroy2();
-  // }
-  //                // playerCells2.length == 0 && false == true && (_0x370936 = 0, _0x3d769c = 0);
-  //       }
+      node = nodes2[_0x5d727f];
+          node.destroy2();
+  }
+                 // playerCells2.length == 0 && false == true && (_0x370936 = 0, _0x3d769c = 0);
+        }
 
   function _0x5474e3() {
     var _0x21dd44;
@@ -1337,7 +1297,6 @@ function getScript(_0x353d13, _0x2d7ad3) {
   }
 
   function _0x44fc5b() {
-    //Zoom smooth
     if (0 != playerCells.length) {
       for (
         var _0x234bb3 = 0, _0x31e00c = 0;
