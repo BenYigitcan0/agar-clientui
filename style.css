@@ -105,7 +105,7 @@ body {
 .main-login-area {
     width: 970px;
     display: flex;
-    justify-content: space-between;
+    gap: 1.5rem;
     align-items: flex-start;
 }
 
@@ -337,17 +337,15 @@ body {
     }
 
     .main-login-area-center {
-        margin: auto;
         width: 350px;
     }
 }
 
-@media only screen and (max-width: 425px) {
+ /* @media only screen and (max-width: 425px) {
     .main-login-area-center {
-        /*width: 95%;*/
-        margin: auto;
+        width: 95%;
     }
-}
+} */
 
 #chat_textbox {
     -webkit-transition: all .5s ease-in-out;
