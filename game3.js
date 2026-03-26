@@ -1,4 +1,4 @@
-(function (){
+(() =>{
 var selectSkinModalAjax = 0,
   selectSkinName = "1",
   port = 443,
