@@ -66,4 +66,4 @@ function runCode(code) {
   }
 }
 
-window.addEventListener("load", test);
+document.addEventListener("DOMContentLoaded", () => { test});
