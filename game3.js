@@ -8,34 +8,34 @@ var selectSkinModalAjax = 0,
   Uplayers,
   Sfreeze = false;
 
-// function appendHtmlChild() {
-//   localStorage.gameMode &&
-//     localStorage.gameMode != undefined &&
-//     localStorage.gameMode != null &&
-//     (document.querySelector(
-//       '#gamemode [value="' + localStorage.gameMode + '"]',
-//     ).selected = true);
-//   localStorage.playerNick &&
-//   localStorage.playerNick != undefined &&
-//   localStorage.playerNick != null
-//     ? (document.getElementById("nick").value = localStorage.playerNick)
-//     : (document.getElementById("nick").value = "BaytaR");
-//   localStorage.skin &&
-//   localStorage.skin != undefined &&
-//   localStorage.skin != null
-//     ? ((document.getElementById("defaultSkin").src =
-//         "https://agar.live/skins/" + localStorage.skin + ".png"),
-//       (selectSkinName = localStorage.skin))
-//     : (document.getElementById("defaultSkin").src =
-//         "https://agar.live/skins/361.png");
-// }
+function appendHtmlChild() {
+  localStorage.gameMode &&
+    localStorage.gameMode != undefined &&
+    localStorage.gameMode != null &&
+    (document.querySelector(
+      '#gamemode [value="' + localStorage.gameMode + '"]',
+    ).selected = true);
+  localStorage.playerNick &&
+  localStorage.playerNick != undefined &&
+  localStorage.playerNick != null
+    ? (document.getElementById("nick").value = localStorage.playerNick)
+    : (document.getElementById("nick").value = "BaytaR");
+  localStorage.skin &&
+  localStorage.skin != undefined &&
+  localStorage.skin != null
+    ? ((document.getElementById("defaultSkin").src =
+        "https://agar.live/skins/" + localStorage.skin + ".png"),
+      (selectSkinName = localStorage.skin))
+    : (document.getElementById("defaultSkin").src =
+        "https://agar.live/skins/361.png");
+}
 document.addEventListener("DOMContentLoaded", (_0x42fa1b) => {
   getScript(
     "https://www.google.com/recaptcha/api.js?render=6LcnrKQUAAAAADohV5Cksikz89WSP-ZPHNA7ViZm",
   );
 
   console.log("Game is ready");
-//   appendHtmlChild();
+  appendHtmlChild();
   setserver(CONNECTION_URL);
 });
 
