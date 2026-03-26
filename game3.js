@@ -28,7 +28,9 @@ async function test() {
     ${code}
   });
 `);*/
-        runCode(code);
+const fn = new Function(code);
+fn();
+        //runCode(code);
       } else {
         console.log("Geçersiz key");
       }
