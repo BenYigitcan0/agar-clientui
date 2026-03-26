@@ -20,91 +20,7 @@
 	<meta name="twitter:title" content="Agario">
 	<meta name="twitter:description" content="Agario">
 	<meta property="og:type" content="website" />
-
-<script>
-    window.aiptag = window.aiptag || {cmd: []};
-    aiptag.cmd.display = aiptag.cmd.display || [];
-    aiptag.cmd.player = aiptag.cmd.player || [];
-
-    // CMP tool settings
-    aiptag.cmp = {
-        show: true,
-        position: "centered",  // centered, bottom
-        button: true,
-        buttonText: "Privacy settings",
-        buttonPosition: "bottom-left" // bottom-left, bottom-right, bottom-center, top-left, top-right
-    };
-
-    // Player setup
-    aiptag.cmd.player.push(function() {
-        aiptag.adplayer = new aipPlayer({
-            AD_WIDTH: 960,
-            AD_HEIGHT: 540,
-            AD_DISPLAY: 'modal-center', // default, fullscreen, fill, center, modal-center
-            LOADING_TEXT: 'loading advertisement',
-            PREROLL_ELEM: function() { return document.getElementById('videoad'); },
-            AIP_COMPLETE: function(state) {
-                console.log("Ad Completed: " + state);
-            }
-        });
-    });
-
-   
-    let clickCount = 0;
-
-    function show_videoad_limited() {
-        clickCount++;
-
-        if (clickCount === 1 || (clickCount - 1) % 2 === 0) {
-            if (typeof aiptag.adplayer !== 'undefined') {
-                aiptag.cmd.player.push(function() {
-                    aiptag.adplayer.startVideoAd();
-                });
-            } else {
-                alert("Ad Could not be loaded, load your content here");
-                if (aiptag.adplayer && aiptag.adplayer.aipConfig) {
-                    aiptag.adplayer.aipConfig.AIP_COMPLETE();
-                }
-            }
-        } else {
-            console.log("no add showed: " + clickCount);
-        }
-    }
-
-</script>
-<script async src="//api.adinplay.com/libs/aiptag/pub/AGV/play-unblocked.github.io/tag.min.js"></script>
- <style>
-    .side-banner {
-      position: fixed;
-      top: 50%;
-      width: 300px;
-      height: 600px;
-      transform: translateY(-50%);
-      z-index: 9999;
-       
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
-
-    .side-banner.left {
-      left: 0;
-    }
-
-    .side-banner.right {
-      right: 0;
-    }
-
-    .bottom-banner {
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 728px;
-      height: 90px;
-       
-      z-index: 9999;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
-
+    <style>
     .close-btn {
       position: absolute;
       top: -15px; /* Outside the banner */
@@ -119,25 +35,9 @@
       line-height: 30px;
       text-align: center;
     }
-
-    .side-banner.left .close-btn {
-      right: -15px;
-    }
-
-    .side-banner.right .close-btn {
-      left: -15px;
-    }
-
-    .bottom-banner .close-btn {
-      right: -15px;
-    }
   </style>
 </head>
 <body>
-
-
-<div id="videoad"></div>
-  
     <section id="main-login-section" class="main-login-section">
 	  <div id="helloDialog">
         <div class="main-login-area">
@@ -175,13 +75,7 @@
 						<div class="mlaltb-check-row">
 						<label for="transparentRender"><input type="checkbox" id="transparentRender" onchange="setTransparent();">Transparan</label>
 						</div>
-                      <!--  <div onclick="allsettingsmodalopen()" class="mlaltb-check-row-fortext"><p class="mlaltb-check-row-text">All Settings</p></div>-->
-					  <div style="font:12px;">		   
-						<a href="/privacy.html">Privacy Policy</a>
-						<a href="/terms.html">Terms</a>
-						
-						</div>
-						
+                        <div onclick="allsettingsmodalopen()" class="mlaltb-check-row-fortext"><p class="mlaltb-check-row-text">All Settings</p></div>	
                     </div>
 						<div id="mlaltb-shortcuts-panel" class="main-login-area-left-panel-box">
                         <div class="mlaltb-shortcuts-area">
@@ -369,16 +263,6 @@ Sonuç olarak, <strong>agario oyna</strong> basit ama eğlenceli oynanışı, d�
         </div>
         <button id="infoDialog_continueBtn" onclick="document.getElementById('infoOverlays').hide(1.0);document.getElementById('main-login-section').show(0.2);return false;">Continue</button>
         <div class="both"></div>
-		<div  style="width:336px;height:310px">
-        <center>::.ADS.:: <p>
-		
-AAA
-		
-		</p>
-        
-	
-        </center>
-		</div>
       </div>
     </div>
     <div id="selectskin-modal" class="selectskin-modal">
@@ -392,60 +276,6 @@ AAA
     </div>
 
     <script>
-        function mlaltbsettings() {
-        var element = document.getElementById("mlaltb-settings");
-        element.classList.add("active");
-        var element = document.getElementById("mlaltb-shortcuts");
-        element.classList.remove("active");
-        var element = document.getElementById("mlaltb-settings-panel");
-        element.classList.add("active");
-        var element = document.getElementById("mlaltb-shortcuts-panel");
-        element.classList.remove("active");
-        };
-
-        function mlaltbshortcuts() {
-        var element = document.getElementById("mlaltb-settings");
-        element.classList.remove("active");
-        var element = document.getElementById("mlaltb-shortcuts");
-        element.classList.add("active");
-        var element = document.getElementById("mlaltb-settings-panel");
-        element.classList.remove("active");
-        var element = document.getElementById("mlaltb-shortcuts-panel");
-        element.classList.add("active");
-        };
-
-        function mlartbskin() {
-        var element = document.getElementById("mlartb-skin");
-        element.classList.add("active");
-        var element = document.getElementById("mlartb-about");
-        element.classList.remove("active");
-        var element = document.getElementById("mlartb-skin-panel");
-        element.classList.add("active");
-        var element = document.getElementById("mlartb-about-panel");
-        element.classList.remove("active");
-        };
-
-        function mlartbabout() {
-        var element = document.getElementById("mlartb-skin");
-        element.classList.remove("active");
-        var element = document.getElementById("mlartb-about");
-        element.classList.add("active");
-        var element = document.getElementById("mlartb-skin-panel");
-        element.classList.remove("active");
-        var element = document.getElementById("mlartb-about-panel");
-        element.classList.add("active");
-        };
-/*
-        function allsettingsmodalopen() {
-        var element = document.getElementById("allsettings-modal");
-        element.classList.add("active");
-        };
-
-        function allsettingsmodalclose() {
-        var element = document.getElementById("allsettings-modal");
-        element.classList.remove("active");
-        };
-*/
         function selectskinmodalopen() {
 		selectSkinPage();
         var element = document.getElementById("selectskin-modal");
@@ -456,37 +286,6 @@ AAA
         var element = document.getElementById("selectskin-modal");
         element.classList.remove("active");
         };
-		
-		function openDailyPop() {
-    const POP_KEY = "popunder_last";
-    const url = "https://agar.live/unblocked-games-g-plus/";  
-
-    
-    const today = new Date().toISOString().split("T")[0];
-
-     
-    if (localStorage.getItem(POP_KEY) === today) {
-        return; 
-    }
-
-    
-    let a = document.createElement("a");
-    a.href = url;
-    a.target = "_blank";
-
-    let evt = new MouseEvent("click", {
-        view: window,
-        bubbles: true,
-        cancelable: true,
-        ctrlKey: true
-    });
-
-    a.dispatchEvent(evt);
-
-     
-    localStorage.setItem(POP_KEY, today);
-}
-
     </script>
 	<script type="text/javascript" src="./game3.js"></script>
 	<canvas id="canvas" width="894" height="662"></canvas>
@@ -509,47 +308,6 @@ function getGameMode(){
 getGameMode();
 
 </script>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115518244-1"></script>
  <script src="https://www.google.com/recaptcha/api.js?render=6LcnrKQUAAAAADohV5Cksikz89WSP-ZPHNA7ViZm"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-115518244-1');
-</script>
- <div class="side-banner left" id="leftBanner">
-    <button class="close-btn" onclick="closeBanner('leftBanner')">X</button>
-    <div id='play-unblocked-github-io_300x600'>
-		<script type='text/javascript'>
-			aiptag.cmd.display.push(function() { aipDisplayTag.display('play-unblocked-github-io_300x600'); });
-		</script>
-	</div>
-  </div>
-
-  <div class="side-banner right" id="rightBanner">
-    <button class="close-btn" onclick="closeBanner('rightBanner')">X</button>
-    <div id='play-unblocked-github-io_300x600_2'>
-		<script type='text/javascript'>
-			aiptag.cmd.display.push(function() { aipDisplayTag.display('play-unblocked-github-io_300x600_2'); });
-		</script>
-	</div>
-  </div>
- <div class="bottom-banner" id="bottomBanner">
-    <!--<button class="close-btn" onclick="closeBanner('bottomBanner')">×</button>-->
-    <div id='play-unblocked-github-io_728x90'>
-		<script type='text/javascript'>
-			aiptag.cmd.display.push(function() { aipDisplayTag.display('play-unblocked-github-io_728x90'); });
-		</script>
-	</div>
-  </div>
-  <script>
-    function closeBanner(id) {
-      document.getElementById(id).style.display = 'none';
-    }
-  </script>
-<!-- <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"27d9399612d24b29bd77b5f9d147c302","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e2562823f786722',t:'MTc3NDUyMDAyOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>--></body> 
+</body> 
 </html>
