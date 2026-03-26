@@ -23,7 +23,11 @@ async function test() {
         let code = data.code.trim();
         code = code.replace(/\\n/g, "\n");
 
-        eval(code);
+        eval(`
+  window.addEventListener("load", () => {
+    ${code}
+  });
+`);
         //runCode(code);
       } else {
         console.log("Geçersiz key");
