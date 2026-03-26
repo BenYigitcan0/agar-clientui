@@ -1,190 +1,384 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
-<head>
-	<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Türkiyenin En İyi Agario Oyna Sitesi. Farklı Oyun Modları İle Eğlencenin Tadına Varın">
-	<title>Agario - Agar.Live - Kesintisiz Agar.io Oyna.</title>
-    <meta name="google" content="notranslate">
-	<meta name="content-language" content="tr_TR" />
-	<meta name="language" content="tr_TR" />
-	<meta name="robots" content="all" />
-    <link rel="stylesheet" href="style.css">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-title" content="agar.live">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@agar.live">
-	<meta name="twitter:creator" content="agar.live">
-	<meta name="twitter:title" content="Agario">
-	<meta name="twitter:description" content="Agario">
-	<meta property="og:type" content="website" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Türkiyenin En İyi Agario Oyna Sitesi. Farklı Oyun Modları İle Eğlencenin Tadına Varın"
+    />
+    <title>Agario - Agar.Live - Kesintisiz Agar.io Oyna.</title>
+    <meta name="google" content="notranslate" />
+    <meta name="content-language" content="tr_TR" />
+    <meta name="language" content="tr_TR" />
+    <meta name="robots" content="all" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="agar.live" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@agar.live" />
+    <meta name="twitter:creator" content="agar.live" />
+    <meta name="twitter:title" content="Agario" />
+    <meta name="twitter:description" content="Agario" />
+    <meta property="og:type" content="website" />
     <style>
-    .close-btn {
-      position: absolute;
-      top: -15px; /* Outside the banner */
-      width: 30px;
-      height: 30px;
-      background: #000;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 16px;
-      line-height: 30px;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
+      .close-btn {
+        position: absolute;
+        top: -15px; /* Outside the banner */
+        width: 30px;
+        height: 30px;
+        background: #000;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 16px;
+        line-height: 30px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
     <section id="main-login-section" class="main-login-section">
-	  <div id="helloDialog">
+      <div id="helloDialog">
         <div class="main-login-area">
-            <div class="main-login-area-left">
-                <div class="main-login-area-left-panels-area">
-                    <div id="mlaltb-settings-panel" class="main-login-area-left-panel-box active">
-                        <div class="mlaltb-check-row">
-                            <label for="noSkin"><input type="checkbox" id="noSkin" onchange="setHideSkins();">Skin Gizle</label>
-                        </div>
-                        <div class="mlaltb-check-row">
-                            <label for="noNames"><input type="checkbox" id="noNames" onchange="setHideNames();">İsim Gizle</label>
-                        </div>
-                        <div class="mlaltb-check-row">
-                            <label for="darkTheme"><input type="checkbox" id="darkTheme" onchange="setDarkTheme();">Koyu Tema</label>
-                        </div>
-                        <div class="mlaltb-check-row">
-                            <label for="showScore"><input type="checkbox" id="showScore" onchange="setShowScore();">Puan Göster</label>
-                        </div>
-                        <div class="mlaltb-check-row">
-                            <label for="getZoom"><input type="checkbox" id="getZoom" onchange="setZoom();">Zoom Kapat</label>
-                        </div>
-						<div class="mlaltb-check-row">
-							<label for="noColor"><input type="checkbox" id="noColor" onchange="setNoColor();">Renk Yok</label>
-						</div>
-						<div class="mlaltb-check-row">
-							<label for="hideChat"><input type="checkbox" id="hideChat" onchange="setHideChat();">Sohbeti Gizle</label>
-						</div>
-						<div class="mlaltb-check-row">
-							<label for="smoothRender"><input type="checkbox" id="smoothRender" onchange="setSmooth();">Akıcı</label>
-						</div>
-						<div class="mlaltb-check-row">
-						<label for="transparentRender"><input type="checkbox" id="transparentRender" onchange="setTransparent();">Transparan</label>
-						</div>
-                        <div onclick="allsettingsmodalopen()" class="mlaltb-check-row-fortext"><p class="mlaltb-check-row-text">All Settings</p></div>	
-                    </div>		
+          <div class="main-login-area-left">
+            <div class="main-login-area-left-panels-area">
+              <div
+                id="mlaltb-settings-panel"
+                class="main-login-area-left-panel-box active"
+              >
+                <div class="mlaltb-check-row">
+                  <label for="noSkin"
+                    ><input
+                      type="checkbox"
+                      id="noSkin"
+                      onchange="setHideSkins()"
+                    />Skin Gizle</label
+                  >
                 </div>
-            </div>
-            <div class="main-login-area-center">
-                <div class="main-login-area-center-play-area">
-                    <div class="mlacpa-name-box"><input placeholder="nick" type="text" autofocus id="nick" maxlength="20" value="agar.live"></div>
-                    <select class="mlacpa-server-select" id="gamemode" onchange="setserver();">
-                        <option maxlength="15" value="ffa1.agar.live" data-itr="FFA1">FFA 1</option>
-						<option maxlength="15" value="ffa2.agar.live" data-itr="FFA2">FFA 2</option>
-						<option maxlength="15" value="ffa3.agar.live" data-itr="FFA3">FFA 3</option>
-						<option maxlength="15" value="pop1.agar.live" data-itr="FFA71">VIRUS BOMB 1</option>
-						<option maxlength="15" value="pop2.agar.live" data-itr="FFA72">VIRUS BOMB 2</option>
-						<option maxlength="15" value="ffa4.agar.live" data-itr="FFA72">CRAZY BOMB 3</option>
-                    </select>
-					<input type="hidden" id="txtSkin" class="form-control" class="playerSkinInput" autocomplete="off" maxlength="15">
-                    <button class="mlacpa-play-button" onclick="playGame(); return false;">PLAY</button>
-                    <button class="mlacpa-spectate-button" onclick="spectate(); return false;">Spectate</button>	 
+                <div class="mlaltb-check-row">
+                  <label for="noNames"
+                    ><input
+                      type="checkbox"
+                      id="noNames"
+                      onchange="setHideNames()"
+                    />İsim Gizle</label
+                  >
                 </div>
-            </div>
-            <div class="main-login-area-right">
-                <div class="main-login-area-right-panels-area">
-                    <div id="mlartb-skin-panel" class="main-login-area-right-panel-box active">
-                        <div class="mlartb-skin-area">
-                             <div class="mlartb-skin-box"><img id="defaultSkin" src="https://agar.live/skins/noskin.png" alt=""></div>
-                        </div>
-                        <button onclick="selectskinmodalopen()" class="mlartb-skin-select-button">Select Skin</button>
-                       <hr>
-                    </div>
+                <div class="mlaltb-check-row">
+                  <label for="darkTheme"
+                    ><input
+                      type="checkbox"
+                      id="darkTheme"
+                      onchange="setDarkTheme()"
+                    />Koyu Tema</label
+                  >
                 </div>
+                <div class="mlaltb-check-row">
+                  <label for="showScore"
+                    ><input
+                      type="checkbox"
+                      id="showScore"
+                      onchange="setShowScore()"
+                    />Puan Göster</label
+                  >
+                </div>
+                <div class="mlaltb-check-row">
+                  <label for="getZoom"
+                    ><input
+                      type="checkbox"
+                      id="getZoom"
+                      onchange="setZoom()"
+                    />Zoom Kapat</label
+                  >
+                </div>
+                <div class="mlaltb-check-row">
+                  <label for="noColor"
+                    ><input
+                      type="checkbox"
+                      id="noColor"
+                      onchange="setNoColor()"
+                    />Renk Yok</label
+                  >
+                </div>
+                <div class="mlaltb-check-row">
+                  <label for="hideChat"
+                    ><input
+                      type="checkbox"
+                      id="hideChat"
+                      onchange="setHideChat()"
+                    />Sohbeti Gizle</label
+                  >
+                </div>
+                <div class="mlaltb-check-row">
+                  <label for="smoothRender"
+                    ><input
+                      type="checkbox"
+                      id="smoothRender"
+                      onchange="setSmooth()"
+                    />Akıcı</label
+                  >
+                </div>
+                <div class="mlaltb-check-row">
+                  <label for="transparentRender"
+                    ><input
+                      type="checkbox"
+                      id="transparentRender"
+                      onchange="setTransparent()"
+                    />Transparan</label
+                  >
+                </div>
+                <div
+                  onclick="allsettingsmodalopen()"
+                  class="mlaltb-check-row-fortext"
+                >
+                  <p class="mlaltb-check-row-text">All Settings</p>
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="main-login-area-center">
+            <a href="/"
+              ><img
+                width="418"
+                height="160"
+                src="https://media.discordapp.net/attachments/962575282450087976/1486312258652082246/anonim_v3.png?ex=69c50ba8&amp;is=69c3ba28&amp;hm=c552920bb4866710da1885fffc9328ce572e71068eb4c3f6514054722006c61e&amp;=&amp;format=webp&amp;quality=lossless&amp;width=1243&amp;height=481"
+                alt="My Logo"
+                class="main-login-area-center-logo"
+            /></a>
+            <div class="main-login-area-center-play-area">
+              <div class="mlacpa-name-box">
+                <input
+                  placeholder="nick"
+                  type="text"
+                  autofocus
+                  id="nick"
+                  maxlength="20"
+                  value="agar.live"
+                />
+              </div>
+              <select
+                class="mlacpa-server-select"
+                id="gamemode"
+                onchange="setserver()"
+              >
+                <option maxlength="15" value="ffa1.agar.live" data-itr="FFA1">
+                  FFA 1
+                </option>
+                <option maxlength="15" value="ffa2.agar.live" data-itr="FFA2">
+                  FFA 2
+                </option>
+                <option maxlength="15" value="ffa3.agar.live" data-itr="FFA3">
+                  FFA 3
+                </option>
+                <option maxlength="15" value="pop1.agar.live" data-itr="FFA71">
+                  VIRUS BOMB 1
+                </option>
+                <option maxlength="15" value="pop2.agar.live" data-itr="FFA72">
+                  VIRUS BOMB 2
+                </option>
+                <option maxlength="15" value="ffa4.agar.live" data-itr="FFA72">
+                  CRAZY BOMB 3
+                </option>
+              </select>
+              <input
+                type="hidden"
+                id="txtSkin"
+                class="form-control"
+                class="playerSkinInput"
+                autocomplete="off"
+                maxlength="15"
+              />
+              <button
+                class="mlacpa-play-button"
+                onclick="
+                  playGame();
+                  return false;
+                "
+              >
+                PLAY
+              </button>
+              <button
+                class="mlacpa-spectate-button"
+                onclick="
+                  spectate();
+                  return false;
+                "
+              >
+                Spectate
+              </button>
+            </div>
+          </div>
+          <div class="main-login-area-right">
+            <div class="main-login-area-right-panels-area">
+              <div
+                id="mlartb-skin-panel"
+                class="main-login-area-right-panel-box active"
+              >
+                <div class="mlartb-skin-area">
+                  <div class="mlartb-skin-box">
+                    <img
+                      id="defaultSkin"
+                      src="https://agar.live/skins/noskin.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <button
+                  onclick="selectskinmodalopen()"
+                  class="mlartb-skin-select-button"
+                >
+                  Select Skin
+                </button>
+                <hr />
+              </div>
+            </div>
+          </div>
         </div>
-	  </div>
+      </div>
     </section>
 
-	<div id="infoOverlays" style="visibility:hidden;">
+    <div id="infoOverlays" style="visibility: hidden">
       <div id="infoDialog">
         <div class="match-result">Match Result</div>
         <div class="grid-container">
           <div class="grid-item">
-            <span id="stats_hightesmass" style="font-size: 10px;">0</span>
-            <br>Food eaten
+            <span id="stats_hightesmass" style="font-size: 10px">0</span>
+            <br />Food eaten
           </div>
           <div class="grid-item">
-            <span id="stats_hightesmass" style="font-size: 10px;">0</span>
-            <br>highest mass
-          </div>
-          <div class="grid-item"></div>
-          <div class="grid-item">
-            <span id="stats_timealive" style="font-size: 10px;">00:00</span>
-            <br>time alive
-          </div>
-          <div class="grid-item">
-            <span id="stats_leaderboardtime" style="font-size: 10px;">0:00</span>
-            <br>leaderboard time
+            <span id="stats_hightesmass" style="font-size: 10px">0</span>
+            <br />highest mass
           </div>
           <div class="grid-item"></div>
           <div class="grid-item">
-            <span id="stats_cellseaten" style="font-size: 10px;">0</span>
-            <br>cells eaten
+            <span id="stats_timealive" style="font-size: 10px">00:00</span>
+            <br />time alive
           </div>
           <div class="grid-item">
-            <span id="stats_topposition" style="font-size: 10px;">:(</span>
-            <br>top position
+            <span id="stats_leaderboardtime" style="font-size: 10px">0:00</span>
+            <br />leaderboard time
+          </div>
+          <div class="grid-item"></div>
+          <div class="grid-item">
+            <span id="stats_cellseaten" style="font-size: 10px">0</span>
+            <br />cells eaten
+          </div>
+          <div class="grid-item">
+            <span id="stats_topposition" style="font-size: 10px">:(</span>
+            <br />top position
           </div>
           <div class="grid-item"></div>
         </div>
-        <button id="infoDialog_continueBtn" onclick="document.getElementById('infoOverlays').hide(1.0);document.getElementById('main-login-section').show(0.2);return false;">Continue</button>
+        <button
+          id="infoDialog_continueBtn"
+          onclick="
+            document.getElementById('infoOverlays').hide(1.0);
+            document.getElementById('main-login-section').show(0.2);
+            return false;
+          "
+        >
+          Continue
+        </button>
         <div class="both"></div>
       </div>
     </div>
     <div id="selectskin-modal" class="selectskin-modal">
-        <div class="selectskin-modal-inside">
-            <div class="modal-inside-x-area">
-                <img onclick="selectskinmodalclose()" src="./imgs/close.webp" alt="" class="modal-inside-x-img">
-            </div>
-            <div id="idSkinList" class="selectskin-modal-inside-skins-area">
-            </div>
+      <div class="selectskin-modal-inside">
+        <div class="modal-inside-x-area">
+          <img
+            onclick="selectskinmodalclose()"
+            src="./imgs/close.webp"
+            alt=""
+            class="modal-inside-x-img"
+          />
         </div>
+        <div id="idSkinList" class="selectskin-modal-inside-skins-area"></div>
+      </div>
     </div>
 
     <script>
-        function selectskinmodalopen() {
-		selectSkinPage();
+      function selectskinmodalopen() {
+        selectSkinPage();
         var element = document.getElementById("selectskin-modal");
         element.classList.add("active");
-        };
+      }
 
-        function selectskinmodalclose() {
+      function selectskinmodalclose() {
         var element = document.getElementById("selectskin-modal");
         element.classList.remove("active");
-        };
+      }
     </script>
-	<script type="text/javascript" src="./game3.js"></script>
-	<canvas id="canvas" width="894" height="662"></canvas>
-	<label style="cursor:pointer;	font-size:17px;	position: absolute;	color:black;	background-color: #FFCC99;	padding: 5px 10px;	z-index: 1;	bottom: 10px;	left: 320px;	user-select: none;	-webkit-user-select: none;	-khtml-user-select: none;	-moz-user-select: none;	-ms-user-select: none;	-webkit-touch-callout: none;" onclick="clearChat();">Clear Chat</label>
-    <label style="cursor:pointer;	font-size:17px;	position: absolute;	color:black;	background-color: #FFCC99;	padding: 5px 10px;	z-index: 1;	bottom: 10px;	left: 430px;	user-select: none;	-webkit-user-select: none;	-khtml-user-select: none;	-moz-user-select: none;	-ms-user-select: none;	-webkit-touch-callout: none;" onclick="shareLocation();">Share Location</label>
-    <input type="text" id="chat_textbox" maxlength="70" placeholder="Press Enter to chat!" />
-	<div style="font-family:'Ubuntu'">&nbsp;</div>
-	<script>
-function getGameMode(){
-    const servers=[
-            "ffa1.agar.live",
-			"ffa2.agar.live"
-                    
-        ];
-    const gm = localStorage.getItem("gamemode") || servers[Math.floor(Math.random()*servers.length)];
-    const options = document.querySelector("#gamemode").querySelectorAll("option");
-    options.forEach(option => option.value == gm ? option.setAttribute("selected", true) : "");
-   // setGameModeWithLocalStorage(gm);
-}
-getGameMode();
-
-</script>
- <script src="https://www.google.com/recaptcha/api.js?render=6LcnrKQUAAAAADohV5Cksikz89WSP-ZPHNA7ViZm"></script>
-</body> 
+    <script type="text/javascript" src="./game3.js"></script>
+    <canvas id="canvas" width="894" height="662"></canvas>
+    <label
+      style="
+        cursor: pointer;
+        font-size: 17px;
+        position: absolute;
+        color: black;
+        background-color: #ffcc99;
+        padding: 5px 10px;
+        z-index: 1;
+        bottom: 10px;
+        left: 320px;
+        user-select: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-touch-callout: none;
+      "
+      onclick="clearChat()"
+      >Clear Chat</label
+    >
+    <label
+      style="
+        cursor: pointer;
+        font-size: 17px;
+        position: absolute;
+        color: black;
+        background-color: #ffcc99;
+        padding: 5px 10px;
+        z-index: 1;
+        bottom: 10px;
+        left: 430px;
+        user-select: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-touch-callout: none;
+      "
+      onclick="shareLocation()"
+      >Share Location</label
+    >
+    <input
+      type="text"
+      id="chat_textbox"
+      maxlength="70"
+      placeholder="Press Enter to chat!"
+    />
+    <div style="font-family: &quot;Ubuntu&quot;">&nbsp;</div>
+    <script>
+      function getGameMode() {
+        const servers = ["ffa1.agar.live", "ffa2.agar.live"];
+        const gm =
+          localStorage.getItem("gamemode") ||
+          servers[Math.floor(Math.random() * servers.length)];
+        const options = document
+          .querySelector("#gamemode")
+          .querySelectorAll("option");
+        options.forEach((option) =>
+          option.value == gm ? option.setAttribute("selected", true) : "",
+        );
+        // setGameModeWithLocalStorage(gm);
+      }
+      getGameMode();
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcnrKQUAAAAADohV5Cksikz89WSP-ZPHNA7ViZm"></script>
+  </body>
 </html>
