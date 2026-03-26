@@ -1464,7 +1464,7 @@ function getScript(_0x353d13, _0x2d7ad3) {
         : (_0x16b27b.fillStyle = "#DDDDDD");
       _0x16b27b.globalAlpha = 0.8;
       _0x456030 == true
-        ? (_0x16b27b.fillStyle = "#FCB53B")
+        ? (_0x16b27b.fillStyle = "#FF0000")
         : (_0x16b27b.fillStyle = "#0000FF");
       _0x16b27b.font = "15px Ubuntu";
       _0x16b27b.fillText("Latency " + Uping + " ms;", 10, 90);
