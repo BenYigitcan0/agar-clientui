@@ -601,3 +601,261 @@ body {
 
 
 
+/* 🖤 Ana alan */
+.main-login-area-center {
+    background: #0d0d0d;
+    border: 3px solid #ff073a;
+        height: 528px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*justify-content: center;*/
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+
+    /* 🔥 Neon glow */
+    box-shadow:
+        0 0 5px #ff073a,
+        0 0 15px #ff073a,
+        0 0 30px #ff073a;
+
+    animation: neonPulse 2s infinite alternate;
+}
+
+/* ✨ Neon border animasyonu */
+@keyframes neonPulse {
+    from {
+        box-shadow:
+            0 0 5px #ff073a,
+            0 0 10px #ff073a,
+            0 0 20px #ff073a;
+    }
+    to {
+        box-shadow:
+            0 0 10px #ff073a,
+            0 0 25px #ff073a,
+            0 0 50px #ff073a;
+    }
+}
+
+/* Keskin köşe */
+.main-login-area-center {
+    clip-path: polygon(
+        5% 0%, 95% 0%,
+        100% 5%, 100% 95%,
+        95% 100%, 5% 100%,
+        0% 95%, 0% 5%
+    );
+}
+
+/* 🔴 Butonlar (koyu kırmızı) */
+.mlacpa-play-button,
+.mlacpa-spectate-button {
+    background: #3a0008 !important; /* koyu kırmızı */
+    color: #ff4d6d !important;
+    border: 2px solid #ff073a !important;
+    font-weight: bold;
+    /* hafif glow */
+    box-shadow: 0 0 5px #ff073a;
+}
+
+/* 🔥 Hover: parlak kırmızı */
+.mlacpa-play-button:hover,
+.mlacpa-spectate-button:hover {
+    background: #ff073a !important;
+    color: #fff !important;
+    box-shadow:
+        0 0 10px #ff073a,
+        0 0 20px #ff073a,
+        0 0 40px #ff073a;
+}
+
+/* Polygon şekil */
+.mlacpa-play-button {
+    clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+}
+
+.mlacpa-spectate-button {
+    clip-path: polygon(0% 0%, 90% 0%, 100% 100%, 10% 100%);
+}
+
+/* ⚫ Input & select */
+.mlacpa-server-select,
+.mlacpa-name-box input {
+    background: #141414 !important;
+    color: #ff4d6d !important;
+    border: 2px solid #ff073a !important;
+    border-radius: 6px;
+}
+
+/* Name box */
+.mlacpa-name-box {
+    display: flex;
+    justify-content: center;
+}
+
+.mlacpa-name-box input {
+    text-align: center;
+}
+
+/* Gizlemeler */
+.mlacpa-name-box button {
+    display: none;
+}
+
+.main-login-area-center-play-area span{
+display: none;
+}
+
+.form-group {
+    display: none;
+}
+
+
+
+/* 🖤 LEFT PANEL ANA KUTU */
+.main-login-area-left {
+    background: #0d0d0d;
+    border: 2px solid #ff073a;
+    border-radius: 10px;
+    padding: 10px;
+
+    box-shadow:
+        0 0 5px #ff073a,
+        0 0 15px #ff073a;
+
+    clip-path: polygon(
+        5% 0%, 95% 0%,
+        100% 5%, 100% 95%,
+        95% 100%, 5% 100%,
+        0% 95%, 0% 5%
+    );
+}
+
+/* 🔴 TAB BUTONLAR (ayarlar / kısayollar) */
+.main-login-area-left-tab-button {
+display: none;
+}
+
+/* ⚫ PANEL İÇİ */
+.main-login-area-left-panel-box {
+    background: #111;
+    border: 1px solid #ff073a;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+/* checkbox satırları */
+.mlaltb-check-row {
+    background: #3a0008 !important; /* koyu kırmızı */
+    color: #ff4d6d !important;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.mlaltb-check-row:hover {
+    background: #ff073a !important;
+    color: #fff !important;
+}
+
+
+/* checkbox'ları custom yap */
+.mlaltb-check-row input[type="checkbox"] {
+    accent-color: #ff073a;
+}
+
+/* linkler */
+.main-login-area-left a {
+    display: none;
+}
+
+/* 🔥 hover glow efektleri */
+.mlaltb-check-row:hover {
+    text-shadow: 0 0 5px #ff073a;
+}
+
+
+
+/* 🖤 RIGHT PANEL ANA */
+.main-login-area-right {
+    background: #0d0d0d;
+    border: 2px solid #ff073a;
+    border-radius: 10px;
+    padding: 10px;
+    height: 528px;
+
+    box-shadow:
+        0 0 5px #ff073a,
+        0 0 15px #ff073a;
+
+    clip-path: polygon(
+        5% 0%, 95% 0%,
+        100% 5%, 100% 95%,
+        95% 100%, 5% 100%,
+        0% 95%, 0% 5%
+    );
+}
+
+/* aktif */
+.main-login-area-right-tab-button {
+   display: none;
+}
+
+/* hover */
+.main-login-area-right-tab-button:hover {
+    background: #ff073a !important;
+    color: #fff !important;
+}
+
+/* ⚫ PANEL İÇİ */
+.main-login-area-right-panel-box {
+    background: #111;
+    border: 1px solid #ff073a;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+/* 🧿 SKIN BOX */
+.mlartb-skin-box {
+    border: 1px solid #ff073a;
+    padding: 5px;
+    box-shadow: 0 0 10px #ff073a;
+        border-radius: 50%;
+}
+
+/* skin image */
+.mlartb-skin-box img {
+    width: 100%;
+    border-radius: 6px;
+        object-fit: cover;   /* düzgün sığdır */
+    border-radius: 50%;
+}
+
+/* 🔥 SELECT SKIN BUTTON */
+.mlartb-skin-select-button {
+    margin-top: 10px;
+    width: 100%;
+    background: #3a0008 !important;
+    color: #ff4d6d !important;
+    border: 2px solid #ff073a !important;
+}
+
+/* hover */
+.mlartb-skin-select-button:hover {
+    background: #ff073a !important;
+    color: #fff !important;
+
+    box-shadow:
+        0 0 10px #ff073a,
+        0 0 20px #ff073a;
+}
+
+/* hr çizgisini de güzelleştir */
+#mlartb-skin-panel hr {
+    border: none;
+    height: 1px;
+    background: #ff073a;
+    box-shadow: 0 0 10px #ff073a;
+}
