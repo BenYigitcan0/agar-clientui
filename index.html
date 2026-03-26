@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Türkiyenin En İyi Agario Oyna Sitesi. Farklı Oyun Modları İle Eğlencenin Tadına Varın">
+	<title>Agario - Agar.Live - Kesintisiz Agar.io Oyna.</title>
+    <meta name="google" content="notranslate">
+	<meta name="content-language" content="tr_TR" />
+	<meta name="language" content="tr_TR" />
+	<meta name="robots" content="all" />
+    <link rel="stylesheet" href="style.css">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="agar.live">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@agar.live">
+	<meta name="twitter:creator" content="agar.live">
+	<meta name="twitter:title" content="Agario">
+	<meta name="twitter:description" content="Agario">
+	<meta property="og:type" content="website" />
+
+<script>
+    window.aiptag = window.aiptag || {cmd: []};
+    aiptag.cmd.display = aiptag.cmd.display || [];
+    aiptag.cmd.player = aiptag.cmd.player || [];
+
+    // CMP tool settings
+    aiptag.cmp = {
+        show: true,
+        position: "centered",  // centered, bottom
+        button: true,
+        buttonText: "Privacy settings",
+        buttonPosition: "bottom-left" // bottom-left, bottom-right, bottom-center, top-left, top-right
+    };
+
+    // Player setup
+    aiptag.cmd.player.push(function() {
+        aiptag.adplayer = new aipPlayer({
+            AD_WIDTH: 960,
+            AD_HEIGHT: 540,
+            AD_DISPLAY: 'modal-center', // default, fullscreen, fill, center, modal-center
+            LOADING_TEXT: 'loading advertisement',
+            PREROLL_ELEM: function() { return document.getElementById('videoad'); },
+            AIP_COMPLETE: function(state) {
+                console.log("Ad Completed: " + state);
+            }
+        });
+    });
+
+   
+    let clickCount = 0;
+
+    function show_videoad_limited() {
+        clickCount++;
+
+        if (clickCount === 1 || (clickCount - 1) % 2 === 0) {
+            if (typeof aiptag.adplayer !== 'undefined') {
+                aiptag.cmd.player.push(function() {
+                    aiptag.adplayer.startVideoAd();
+                });
+            } else {
+                alert("Ad Could not be loaded, load your content here");
+                if (aiptag.adplayer && aiptag.adplayer.aipConfig) {
+                    aiptag.adplayer.aipConfig.AIP_COMPLETE();
+                }
+            }
+        } else {
+            console.log("no add showed: " + clickCount);
+        }
+    }
+
+</script>
+<script async src="//api.adinplay.com/libs/aiptag/pub/AGV/play-unblocked.github.io/tag.min.js"></script>
+ <style>
+    .side-banner {
+      position: fixed;
+      top: 50%;
+      width: 300px;
+      height: 600px;
+      transform: translateY(-50%);
+      z-index: 9999;
+       
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .side-banner.left {
+      left: 0;
+    }
+
+    .side-banner.right {
+      right: 0;
+    }
+
+    .bottom-banner {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 728px;
+      height: 90px;
+       
+      z-index: 9999;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: -15px; /* Outside the banner */
+      width: 30px;
+      height: 30px;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 30px;
+      text-align: center;
+    }
+
+    .side-banner.left .close-btn {
+      right: -15px;
+    }
+
+    .side-banner.right .close-btn {
+      left: -15px;
+    }
+
+    .bottom-banner .close-btn {
+      right: -15px;
+    }
+  </style>
+</head>
+<body>
+
+
+<div id="videoad"></div>
+  
+    <section id="main-login-section" class="main-login-section">
+	  <div id="helloDialog">
+        <div class="main-login-area">
+            <div class="main-login-area-left">
+                <div class="main-login-area-left-tab-area">
+                    <button id="mlaltb-settings" onclick="mlaltbsettings()" class="main-login-area-left-tab-button active">Ayarlar</button>
+                    <button id="mlaltb-shortcuts" onclick="mlaltbshortcuts()" class="main-login-area-left-tab-button ">kısayollar</button>
+                </div>
+                <div class="main-login-area-left-panels-area">
+                    <div id="mlaltb-settings-panel" class="main-login-area-left-panel-box active">
+                        <div class="mlaltb-check-row">
+                            <label for="noSkin"><input type="checkbox" id="noSkin" onchange="setHideSkins();">Skin Gizle</label>
+                        </div>
+                        <div class="mlaltb-check-row">
+                            <label for="noNames"><input type="checkbox" id="noNames" onchange="setHideNames();">İsim Gizle</label>
+                        </div>
+                        <div class="mlaltb-check-row">
+                            <label for="darkTheme"><input type="checkbox" id="darkTheme" onchange="setDarkTheme();">Koyu Tema</label>
+                        </div>
+                        <div class="mlaltb-check-row">
+                            <label for="showScore"><input type="checkbox" id="showScore" onchange="setShowScore();">Puan Göster</label>
+                        </div>
+                        <div class="mlaltb-check-row">
+                            <label for="getZoom"><input type="checkbox" id="getZoom" onchange="setZoom();">Zoom Kapat</label>
+                        </div>
+						<div class="mlaltb-check-row">
+							<label for="noColor"><input type="checkbox" id="noColor" onchange="setNoColor();">Renk Yok</label>
+						</div>
+						<div class="mlaltb-check-row">
+							<label for="hideChat"><input type="checkbox" id="hideChat" onchange="setHideChat();">Sohbeti Gizle</label>
+						</div>
+						<div class="mlaltb-check-row">
+							<label for="smoothRender"><input type="checkbox" id="smoothRender" onchange="setSmooth();">Akıcı</label>
+						</div>
+						<div class="mlaltb-check-row">
+						<label for="transparentRender"><input type="checkbox" id="transparentRender" onchange="setTransparent();">Transparan</label>
+						</div>
+                      <!--  <div onclick="allsettingsmodalopen()" class="mlaltb-check-row-fortext"><p class="mlaltb-check-row-text">All Settings</p></div>-->
+					  <div style="font:12px;">		   
+						<a href="/privacy.html">Privacy Policy</a>
+						<a href="/terms.html">Terms</a>
+						
+						</div>
+						
+                    </div>
+						<div id="mlaltb-shortcuts-panel" class="main-login-area-left-panel-box">
+                        <div class="mlaltb-shortcuts-area">
+                            <div class="mlaltb-shortcut-box">W</div>
+                            <div class="mlaltb-shortcut-desc-box">Yem</div>
+                        </div>
+                        <div class="mlaltb-shortcuts-area">
+                            <div class="mlaltb-shortcut-box">E</div>
+                            <div class="mlaltb-shortcut-desc-box">Çoklu Yem</div>
+                        </div>
+                        <div class="mlaltb-shortcuts-area">
+                            <div class="mlaltb-shortcut-box">SPACE</div>
+                            <div class="mlaltb-shortcut-desc-box">Bölün</div>
+                        </div>
+                        <div class="mlaltb-shortcuts-area">
+                            <div class="mlaltb-shortcut-box">CTRL</div>
+                            <div class="mlaltb-shortcut-desc-box">Çoklu Bölün</div>
+                        </div>
+                        <div class="mlaltb-shortcuts-area">
+                            <div class="mlaltb-shortcut-box">F</div>
+                            <div class="mlaltb-shortcut-desc-box">Dur / Devam</div>
+                        </div>
+                        <div class="mlaltb-shortcuts-area">
+                            <div class="mlaltb-shortcut-box">Enter</div>
+                            <div class="mlaltb-shortcut-desc-box">Sohbet</div>
+                        </div>
+                        <div class="mlaltb-shortcuts-area">
+                            <div class="mlaltb-shortcut-box">ESC</div>
+                            <div class="mlaltb-shortcut-desc-box">Menu</div>
+                        </div>
+                        <div class="mlaltb-shortcuts-area">
+                            <div class="mlaltb-shortcut-box">C</div>
+                            <div class="mlaltb-shortcut-desc-box">Konum Gönder</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-login-area-center">
+                <div class="main-login-area-center-play-area">
+                    <div class="mlacpa-name-box"><input placeholder="nick" type="text" autofocus id="nick" maxlength="20" value="agar.live"><button onclick="window.open('https://fancy.agar.live', '_blank')">Fancy Nick</button></div>
+                    <select class="mlacpa-server-select" id="gamemode" onchange="setserver();">
+                        <option maxlength="15" value="ffa1.agar.live" data-itr="FFA1">FFA 1</option>
+						<option maxlength="15" value="ffa2.agar.live" data-itr="FFA2">FFA 2</option>
+						<option maxlength="15" value="ffa3.agar.live" data-itr="FFA3">FFA 3</option>
+						<!--<option maxlength="15" value="ffa44.agariodns.cyou" data-itr="FFA4">FFA 4 - EU</option>-->
+						<option maxlength="15" value="pop1.agar.live" data-itr="FFA71">VIRUS BOMB 1</option>
+						<option maxlength="15" value="pop2.agar.live" data-itr="FFA72">VIRUS BOMB 2</option>
+						<option maxlength="15" value="ffa4.agar.live" data-itr="FFA72">CRAZY BOMB 3</option>
+						<!--<option maxlength="15" value="ffa8.agariodns.cyou" data-itr="FFA8">FFA 8 - USA</option>
+						<option maxlength="15" value="ffa9.agariodns.cyou" data-itr="FFA9">FFA 9 - USA</option>
+						<option maxlength="15" value="ffa10.agariodns.cyou" data-itr="FFA10">FFA 10 - USA</option>
+						<option maxlength="15" value="rainbow.agariodns.cyou" data-itr="FFA7">RAINBOW - EU</option>
+						<option maxlength="16" value="instant.agariodns.cyou" data-itr="merge">INSTANT MERGE - EU</option>
+						<option maxlength="15" value="team.agariodns.cyou" data-itr="FFAT">TEAMS - EU </option>
+						<option maxlength="15" value="black.agariodns.cyou" data-itr="FFAB">BLACKHOLE - EU</option>-->
+                    </select>
+					<input type="hidden" id="txtSkin" class="form-control" class="playerSkinInput" autocomplete="off" maxlength="15">
+                    <button class="mlacpa-play-button" onclick="show_videoad_limited(); playGame(); openDailyPop(); return false;">PLAY</button>
+                    <button class="mlacpa-spectate-button" onclick="spectate(); return false;">Spectate</button>
+					<div class="form-group" style="width:0px;height:0px" z-index: -1;>
+					<hr>
+					<center>
+	AGARIO				
+
+</center>
+	
+</div>
+             
+<span style="padding-top:15px;text-align:center;width:100%;">
+						<center>							
+						<!--	<a href="https://agar.live/"  rel="alternate" hreflang="en-us"><img title="usa" alt="usa" src="/imgs/us.png" width="16" height="11"></a>
+							<label style="color:rgba(0,0,0,0.1)"> -<label class="visible-xs"></label> </label> 
+							<a href="https://de.agar.live" rel="alternate" hreflang="de-de"><img title="German" alt="germany" src="/imgs/de.png" width="16" height="11"></a>
+							<label style="color:rgba(0,0,0,0.1)"> -<label class="visible-xs"></label> </label> 
+							<a href="https://fr.agar.live" rel="alternate" hreflang="de-de"><img title="france" alt="france" src="/imgs/fr.png" width="16" height="11"></a>
+							<label style="color:rgba(0,0,0,0.1)"> -<label class="visible-xs"></label> </label> 
+							<a href="https://es.agar.live"  rel="alternate" hreflang="es-es"><img title="Spain" alt="spain" src="/imgs/es.png" width="16" height="11"></a>
+							<label style="color:rgba(0,0,0,0.1)"> -<label class="visible-xs"></label> </label> 
+							<a href="https://pt.agar.live"  rel="alternate" hreflang="pt-pt"><img title="portuguese" alt="portuguese" src="/imgs/pt.png" width="16" height="11"></a>
+							<label style="color:rgba(0,0,0,0.1)"> -<label class="visible-xs"></label> </label> 
+							<a href="https://pl.agar.live"  rel="alternate" hreflang="pl-pl"><img title="poland" alt="poland" src="/imgs/pl.png" width="16" height="11"></a>
+							<label style="color:rgba(0,0,0,0.1)"> -<label class="visible-xs"></label> </label> 
+							<a href="https://ru.agar.live"  rel="alternate" hreflang="ru-ru"><img title="russia" alt="russia" src="/imgs/ru.png" width="16" height="11"></a>
+							<label style="color:rgba(0,0,0,0.1)"> -<label class="visible-xs"></label> </label> 
+							<a  href="https://tr.agar.live" rel="alternate" hreflang="tr-tr"><img title="Turkish" alt="turkey" src="/imgs/tr.png" width="16" height="11"></a>
+							<label style="color:rgba(0,0,0,0.1)"> -<label class="visible-xs"></label> </label> 
+							<a  href="https://discord.com/invite/59SexJZmYq" target="_blank" rel="alternate" hreflang="tr-tr"><img title="discord" alt="discord" src="/imgs/discord.webp" width="75" height="25"></a>
+							<label style="color:rgba(0,0,0,0.1)"> -<label class="visible-xs"></label> </label>-->
+							
+						</center>
+						</span>			 
+                </div>
+            </div>
+            <div class="main-login-area-right">
+                <div class="main-login-area-right-tab-area">
+                    <button id="mlartb-skin" onclick="mlartbskin()" class="main-login-area-right-tab-button active">Skin</button>
+                    <button id="mlartb-about" onclick="mlartbabout()" class="main-login-area-right-tab-button ">About</button>
+                </div>
+                <div class="main-login-area-right-panels-area">
+                    <div id="mlartb-skin-panel" class="main-login-area-right-panel-box active">
+                        <div class="mlartb-skin-area">
+                            <!-- <div class="mlartb-skin-box"><img id="defaultSkin" src="./skins/noskin.png" alt=""></div> -->
+                        </div>
+                        <button onclick="selectskinmodalopen()" class="mlartb-skin-select-button">Select Skin</button>
+                       <hr>
+
+						<div style="overflow-y:scroll;height:320px">
+					<ul>	
+		<li>	<a href="https://agar.live/slope/" target="_blank">slope</a></li>
+		<li>	<a href="https://agar.live/1v1-lol/" target="_blank">1v1.lol</a></li>
+		<li>	<a href="https://agar.live/paper-io/" target="_blank">paper.io</a></li>
+		<li>	<a href="https://agar.live/unblocked-games-76/" target="_blank">unblocked games</a></li>
+		<li>	<a href="https://agar.live/retro-bowl/" target="_blank">retro bowl</a> </li>
+		<li>	<a href="https://agar.live/yohoho/" target="_blank">yohoho</a></li>
+		<li>	<a href="https://agar.live/cookie-clicker/" target="_blank">cookie clicker</a></li>
+		<li>	<a href="https://agar.live/drift-boss" target="_blank">drift boss</a></li>
+		<li>	<a href="https://agar.live/drift-hunters" target="_blank">drift hunters</a></li>
+		<li>	<a href="https://tr.agar.live/" target="_blank">agario</a></li>
+		<li>    <a href="https://agar.live/unblocked-games-g-plus">unblocked games g+</a></li>
+		<li>    <a href="https://agar.live/io-games">io games</a></li>
+		<li>    <a href="https://agar.live/funny-shooter-2">funny shooter 2</a></li>
+			</ul>
+
+					</div>
+                    </div>
+                    <div id="mlartb-about-panel" class="main-login-area-right-panel-box ">
+                        <div class="malrtb-about-panel-header">
+                            <p class="malrtb-about-panel-header-text"><b>agario</b></p>
+                        </div>
+                        <div class="malrtb-about-panel-text-area">
+                            <p class="malrtb-about-panel-text-area-text">
+							<strong>Agario</strong>, online bir çok oyunculu oyun olarak karşımıza çıkmaktadır. 2015 yılında çıkan oyun, oldukça popüler hale gelmiştir. Oyunun amacı, bir hücreyi kontrol ederek diğer oyuncuların hücrelerini yiyerek büyümek ve lider tablosunda birinci olmaktır.
+Oyunun oynanışı oldukça basittir. Oyuncular, bir hücre olarak başlarlar ve oyunda gezinerek diğer hücreleri yemeye çalışırlar. Yiyebilecekleri hücreler, oyuncunun hücresinden daha küçük olanlardır. Yedikçe büyüyen hücre, diğer hücrelerin de dikkatini çeker ve oyuncular arasında rekabet başlar. Oyuncuların hedefi, mümkün olduğunca büyümek ve lider tablosunda birinci sıraya yerleşmektir.
+Oyunun başarısının en büyük sebeplerinden biri, basit ama eğlenceli oynanışıdır. Herhangi bir kuralları, taktikleri veya zorlukları yoktur. Oyuncular, sadece farelerini kullanarak hücrelerini kontrol ederler. Oyunun sunduğu basit ama bağımlılık yapan oynanış, milyonlarca oyuncunun oyunu oynamasını sağlamıştır.
+Oyunun grafikleri oldukça basittir ve düşük sistem gereksinimleri vardır. Bu da, oyuncuların farklı cihazlarda oynamasını mümkün kılar. Oyunun renkli ve basit grafikleri, oyunu daha eğlenceli hale getirir.
+Oyunda oyuncular, diğer oyuncuların hücrelerini yemeye çalışırken aynı zamanda diğer oyunculardan kaçınmak zorundadırlar. Büyük hücreler, küçük hücreleri yiyebilirler ancak aynı zamanda daha yavaş hareket ederler. Bu nedenle, büyük hücrelerin küçük hücrelerden kaçınması gerekmektedir. Küçük hücreler ise hızlı hareket edebilirler ancak diğer hücreler tarafından kolayca yenebilirler.
+Oyunda bir diğer önemli nokta ise hücre bölme özelliğidir. Oyuncular, hücrelerini istedikleri zaman ikiye bölerek daha hızlı hareket edebilirler. Ancak, bölündükten sonra hücreler küçülürler ve daha savunmasız hale gelirler.
+Agar.io, oldukça popüler bir oyun olmasına rağmen, bazı eleştiriler de almıştır. Oyun, çoğunlukla şans faktörüne dayalıdır. Oyuncuların hücreleri, rastgele bir şekilde yerleştirilir ve diğer oyuncuların hücreleri de rastgele yerleştirilir. Bu nedenle, bazı oyuncuların avantajlı pozisyonlarda başlamaları mümkündür. Ayrıca, oyuncuların diğer oyuncuların hücrelerine yapışıp hareketlerini engellemeleri de eleştirilen noktalardan biridir.
+Oyunun popülaritesi, oyuncular arasında rekabeti arttırmış ve oyunda hile yapmak isteyen oyuncuları da çekmiştir. Hile yapan oyuncular, hücrelerini kontrol etmek için botlar kullanabilirler. Bu nedenle, oyunun yapımcıları botlara karşı sıkı önlemler almıştır.
+Agar.io nun başarısı, diğer geliştiricileri de benzer oyunlar yapmaya teşvik etmiştir. Benzer oyunlar, <strong>Agar.io</strong> nun popülaritesi kadar büyük bir etki yaratmasa da, hala birçok oyuncu tarafından oynanmaktadır.
+Oyun, birçok farklı versiyonu ve modifikasyonu da bulunmaktadır. Bazı modifikasyonlar, oyuna yeni özellikler eklerken, bazıları ise oyunun orijinal özelliklerini değiştirir. Oyunun yapımcıları, bazı modifikasyonların orijinal oyun deneyimini bozduğunu belirterek, bu modifikasyonlara karşı çıkmıştır.
+Sonuç olarak, <strong>agario oyna</strong> basit ama eğlenceli oynanışı, düşük sistem gereksinimleri ve bağımlılık yapıcı yapısı nedeniyle popüler bir oyun olmuştur. Oyuncular, farklı cihazlarda oynayabilirler ve lider tablosunda birinci olmak için diğer oyuncularla rekabet edebilirler. Oyun, eleştirilere rağmen hala birçok oyuncu tarafından oynanmaktadır ve benzer oyunlar da yapılmaya devam etmektedir.
+					
+								This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+							</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	  </div>
+    </section>
+
+	<div id="infoOverlays" style="visibility:hidden;">
+      <div id="infoDialog">
+        <div class="match-result">Match Result</div>
+        <div class="grid-container">
+          <div class="grid-item">
+            <span id="stats_hightesmass" style="font-size: 10px;">0</span>
+            <br>Food eaten
+          </div>
+          <div class="grid-item">
+            <span id="stats_hightesmass" style="font-size: 10px;">0</span>
+            <br>highest mass
+          </div>
+          <div class="grid-item"></div>
+          <div class="grid-item">
+            <span id="stats_timealive" style="font-size: 10px;">00:00</span>
+            <br>time alive
+          </div>
+          <div class="grid-item">
+            <span id="stats_leaderboardtime" style="font-size: 10px;">0:00</span>
+            <br>leaderboard time
+          </div>
+          <div class="grid-item"></div>
+          <div class="grid-item">
+            <span id="stats_cellseaten" style="font-size: 10px;">0</span>
+            <br>cells eaten
+          </div>
+          <div class="grid-item">
+            <span id="stats_topposition" style="font-size: 10px;">:(</span>
+            <br>top position
+          </div>
+          <div class="grid-item"></div>
+        </div>
+        <button id="infoDialog_continueBtn" onclick="document.getElementById('infoOverlays').hide(1.0);document.getElementById('main-login-section').show(0.2);return false;">Continue</button>
+        <div class="both"></div>
+		<div  style="width:336px;height:310px">
+        <center>::.ADS.:: <p>
+		
+AAA
+		
+		</p>
+        
+	
+        </center>
+		</div>
+      </div>
+    </div>
+    <div id="selectskin-modal" class="selectskin-modal">
+        <div class="selectskin-modal-inside">
+            <div class="modal-inside-x-area">
+                <!-- <img onclick="selectskinmodalclose()" src="./imgs/close.webp" alt="" class="modal-inside-x-img"> -->
+            </div>
+            <div id="idSkinList" class="selectskin-modal-inside-skins-area">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function mlaltbsettings() {
+        var element = document.getElementById("mlaltb-settings");
+        element.classList.add("active");
+        var element = document.getElementById("mlaltb-shortcuts");
+        element.classList.remove("active");
+        var element = document.getElementById("mlaltb-settings-panel");
+        element.classList.add("active");
+        var element = document.getElementById("mlaltb-shortcuts-panel");
+        element.classList.remove("active");
+        };
+
+        function mlaltbshortcuts() {
+        var element = document.getElementById("mlaltb-settings");
+        element.classList.remove("active");
+        var element = document.getElementById("mlaltb-shortcuts");
+        element.classList.add("active");
+        var element = document.getElementById("mlaltb-settings-panel");
+        element.classList.remove("active");
+        var element = document.getElementById("mlaltb-shortcuts-panel");
+        element.classList.add("active");
+        };
+
+        function mlartbskin() {
+        var element = document.getElementById("mlartb-skin");
+        element.classList.add("active");
+        var element = document.getElementById("mlartb-about");
+        element.classList.remove("active");
+        var element = document.getElementById("mlartb-skin-panel");
+        element.classList.add("active");
+        var element = document.getElementById("mlartb-about-panel");
+        element.classList.remove("active");
+        };
+
+        function mlartbabout() {
+        var element = document.getElementById("mlartb-skin");
+        element.classList.remove("active");
+        var element = document.getElementById("mlartb-about");
+        element.classList.add("active");
+        var element = document.getElementById("mlartb-skin-panel");
+        element.classList.remove("active");
+        var element = document.getElementById("mlartb-about-panel");
+        element.classList.add("active");
+        };
+/*
+        function allsettingsmodalopen() {
+        var element = document.getElementById("allsettings-modal");
+        element.classList.add("active");
+        };
+
+        function allsettingsmodalclose() {
+        var element = document.getElementById("allsettings-modal");
+        element.classList.remove("active");
+        };
+*/
+        function selectskinmodalopen() {
+		selectSkinPage();
+        var element = document.getElementById("selectskin-modal");
+        element.classList.add("active");
+        };
+
+        function selectskinmodalclose() {
+        var element = document.getElementById("selectskin-modal");
+        element.classList.remove("active");
+        };
+		
+		function openDailyPop() {
+    const POP_KEY = "popunder_last";
+    const url = "https://agar.live/unblocked-games-g-plus/";  
+
+    
+    const today = new Date().toISOString().split("T")[0];
+
+     
+    if (localStorage.getItem(POP_KEY) === today) {
+        return; 
+    }
+
+    
+    let a = document.createElement("a");
+    a.href = url;
+    a.target = "_blank";
+
+    let evt = new MouseEvent("click", {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+        ctrlKey: true
+    });
+
+    a.dispatchEvent(evt);
+
+     
+    localStorage.setItem(POP_KEY, today);
+}
+
+    </script>
+	<script type="text/javascript" src="./game3.js"></script>
+	<canvas id="canvas" width="894" height="662"></canvas>
+	<label style="cursor:pointer;	font-size:17px;	position: absolute;	color:black;	background-color: #FFCC99;	padding: 5px 10px;	z-index: 1;	bottom: 10px;	left: 320px;	user-select: none;	-webkit-user-select: none;	-khtml-user-select: none;	-moz-user-select: none;	-ms-user-select: none;	-webkit-touch-callout: none;" onclick="clearChat();">Clear Chat</label>
+    <label style="cursor:pointer;	font-size:17px;	position: absolute;	color:black;	background-color: #FFCC99;	padding: 5px 10px;	z-index: 1;	bottom: 10px;	left: 430px;	user-select: none;	-webkit-user-select: none;	-khtml-user-select: none;	-moz-user-select: none;	-ms-user-select: none;	-webkit-touch-callout: none;" onclick="shareLocation();">Share Location</label>
+    <input type="text" id="chat_textbox" maxlength="70" placeholder="Press Enter to chat!" />
+	<div style="font-family:'Ubuntu'">&nbsp;</div>
+	<script>
+function getGameMode(){
+    const servers=[
+            "ffa1.agar.live",
+			"ffa2.agar.live"
+                    
+        ];
+    const gm = localStorage.getItem("gamemode") || servers[Math.floor(Math.random()*servers.length)];
+    const options = document.querySelector("#gamemode").querySelectorAll("option");
+    options.forEach(option => option.value == gm ? option.setAttribute("selected", true) : "");
+   // setGameModeWithLocalStorage(gm);
+}
+getGameMode();
+
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115518244-1"></script>
+ <script src="https://www.google.com/recaptcha/api.js?render=6LcnrKQUAAAAADohV5Cksikz89WSP-ZPHNA7ViZm"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-115518244-1');
+</script>
+ <div class="side-banner left" id="leftBanner">
+    <button class="close-btn" onclick="closeBanner('leftBanner')">X</button>
+    <div id='play-unblocked-github-io_300x600'>
+		<script type='text/javascript'>
+			aiptag.cmd.display.push(function() { aipDisplayTag.display('play-unblocked-github-io_300x600'); });
+		</script>
+	</div>
+  </div>
+
+  <div class="side-banner right" id="rightBanner">
+    <button class="close-btn" onclick="closeBanner('rightBanner')">X</button>
+    <div id='play-unblocked-github-io_300x600_2'>
+		<script type='text/javascript'>
+			aiptag.cmd.display.push(function() { aipDisplayTag.display('play-unblocked-github-io_300x600_2'); });
+		</script>
+	</div>
+  </div>
+ <div class="bottom-banner" id="bottomBanner">
+    <!--<button class="close-btn" onclick="closeBanner('bottomBanner')">×</button>-->
+    <div id='play-unblocked-github-io_728x90'>
+		<script type='text/javascript'>
+			aiptag.cmd.display.push(function() { aipDisplayTag.display('play-unblocked-github-io_728x90'); });
+		</script>
+	</div>
+  </div>
+  <script>
+    function closeBanner(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+  </script>
+<!-- <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"27d9399612d24b29bd77b5f9d147c302","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e2562823f786722',t:'MTc3NDUyMDAyOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>--></body> 
+</html>
