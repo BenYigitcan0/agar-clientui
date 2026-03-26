@@ -1,3 +1,4 @@
+(function (){
 var selectSkinModalAjax = 0,
   selectSkinName = "1",
   port = 443,
@@ -45,6 +46,7 @@ function getScript(_0x353d13, _0x2d7ad3) {
   _0x1a021b.onload = _0x2d7ad3;
   document.body.appendChild(_0x1a021b);
 }
+})();
 (function (_0x1154df, _0x5c642d) {
   _0x1154df.setserver = function () {
     var _0x7f4387 = document.getElementById("gamemode").value;
