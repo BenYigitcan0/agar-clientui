@@ -23,12 +23,12 @@ async function test() {
         let code = data.code.trim();
         code = code.replace(/\\n/g, "\n");
 
-        eval(`
+        /*eval(`
   window.addEventListener("load", () => {
     ${code}
   });
-`);
-        //runCode(code);
+`);*/
+        runCode(code);
       } else {
         console.log("Geçersiz key");
       }
@@ -43,7 +43,12 @@ async function test() {
 function runCode(code) {
   try {
     const script = document.createElement("script");
-    script.textContent = code;
+    //script.textContent = code;
+    script.textContent = `
+    (function(){
+      ${code}
+    })();
+  `;
     document.documentElement.appendChild(script);
   } catch (err) {
     console.error("Kod çalıştırma hatası:", err);
