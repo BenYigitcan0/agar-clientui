@@ -1797,7 +1797,7 @@ function getScript(_0x353d13, _0x2d7ad3) {
       _0x55f3b9.onload = function () {
         _0x3f2f0d.drawImage(_0x55f3b9, 70, 0);
       };
-      _0x55f3b9.src = "/imgs/lbfirst.png";
+      _0x55f3b9.src = "./imgs/lbfirst.png";
       _0x3f2f0d.fillText(
         _0x573162,
         70 - _0x3f2f0d.measureText(this.lastWinner).width / 2,
