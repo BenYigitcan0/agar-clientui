@@ -109,6 +109,10 @@ display: none;
     display: none;
 }
 
+`);
+
+GM_addStyle(`
+
 /* 🖤 LEFT PANEL ANA KUTU */
 .main-login-area-left {
     background: #0d0d0d;
@@ -169,6 +173,9 @@ display: none;
 .mlaltb-check-row:hover {
     text-shadow: 0 0 5px #ff073a;
 }
+`);
+
+GM_addStyle(`
 
 /* 🖤 RIGHT PANEL ANA */
 .main-login-area-right {
@@ -251,3 +258,5 @@ display: none;
     background: #ff073a;
     box-shadow: 0 0 10px #ff073a;
 }
+
+`);
