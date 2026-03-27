@@ -80,6 +80,18 @@ function getScript(_0x353d13, _0x2d7ad3) {
           if(_0x17415e == 396){
           document.getElementById("defaultSkin").src =
       "https://cdn.agarz.com/!eyeless_jack!.png";
+    } else if(_0x17415e == 397){
+          document.getElementById("defaultSkin").src =
+      "https://cdn.agarz.com/!kanaki!.png";
+    } else if(_0x17415e == 398){
+          document.getElementById("defaultSkin").src =
+      "https://cdn.agarz.com/ado148.png";
+    } else if(_0x17415e == 399){
+          document.getElementById("defaultSkin").src =
+     "2wCEAAkGBxISEhUTEhMVFhUXGBgXFRgVFhUXGBUYFhUYFhUYFhgYHSggGBolGxcVITEhJSkrLi4uGCAzODMsNygtLisBCgoKDQ0OFRAPFSsdFR0rKy0rLS0tKysrLS0tLS0rLSs3LS0tLS0tLS0tKystKystLSs3LS03LS0tNy0rKystK";
+    } else if(_0x17415e == 400){
+          document.getElementById("defaultSkin").src =
+      "https://cdn.agarz.com/!eyeless_jack!.png";
     }
   }
     closeSkinPage();
