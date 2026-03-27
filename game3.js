@@ -2227,7 +2227,7 @@ function getScript(_0x353d13, _0x2d7ad3) {
             ? (!_0x460680.hasOwnProperty(this.skinName) &&
                 ((_0x460680[this.skinName] = new Image()),
                 (_0x460680[this.skinName].src =
-                  parseInt(li[0]) > 395 ? "https://agar.live/skins/" + this.skinName + ".png" : "https://cdn.agarz.com/!eyeless_jack!.png"),
+                  parseInt(li[0]) > 395 ? "https://cdn.agarz.com/!eyeless_jack!.png" : "https://agar.live/skins/" + li[0] + ".png"),
                 (_0x460680[this.skinName].onload = function () {
                   _0x4837a9[this.src] = true;
                 })),
