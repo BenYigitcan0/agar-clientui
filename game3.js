@@ -112,7 +112,7 @@ const leftPanelsArea = document.querySelector(".main-login-area-left-panel-box")
 
 var imageBgNew = new Image();
 imageBgNew.crossOrigin = 'anonymous';
-imageBgNew.src = "https://agar.live/skins/76.png";
+imageBgNew.src = "https://agar.cc/tr/skins/background/hex2.webp";
   input.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     const url = input.value.trim();
