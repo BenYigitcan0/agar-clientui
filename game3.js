@@ -106,6 +106,8 @@ function getScript(_0x353d13, _0x2d7ad3) {
 const panelC = document.querySelector(".main-login-area-center");
 const panelR = document.querySelector(".main-login-area-right");
 const panelL = document.querySelector(".main-login-area-left");
+const skinPanel = document.querySelector("#mlartb-skin-panel");
+const leftPanelsArea = document.querySelector(".main-login-area-left-panels-area");
 
 
   input.addEventListener('keydown', (e) => {
@@ -121,6 +123,12 @@ const panelL = document.querySelector(".main-login-area-left");
             panelL.style.backgroundImage = `url('${url}')`;
     panelL.style.backgroundSize = 'cover';
     panelL.style.backgroundPosition = 'center';
+            skinPanel.style.backgroundImage = `url('${url}')`;
+    skinPanel.style.backgroundSize = 'cover';
+    skinPanel.style.backgroundPosition = 'center';
+            leftPanelsArea.style.backgroundImage = `url('${url}')`;
+    leftPanelsArea.style.backgroundSize = 'cover';
+    leftPanelsArea.style.backgroundPosition = 'center';
   }
    const img = new Image();
   img.crossOrigin = 'anonymous'; // CORS için
