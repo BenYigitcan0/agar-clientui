@@ -6,7 +6,8 @@ var selectSkinModalAjax = 0,
   Uping,
   Uuptime,
   Uplayers,
-  Sfreeze = false;
+  Sfreeze = false
+  gameBackground = false;
 
 function appendHtmlChild() {
   localStorage.gameMode &&
@@ -136,6 +137,9 @@ imageBgNew.src = "imgs/hex2.webp";
    imageBgNew = new Image();
   imageBgNew.crossOrigin = 'anonymous'; // CORS için
   imageBgNew.src = url;
+      imageBgNew.onload = function () {
+        gameBackground = true;
+      }
 }
 });
 
@@ -1462,14 +1466,11 @@ imageBgNew.src = "imgs/hex2.webp";
     _0x16b27b.closePath();
     _0x16b27b.stroke();
 
-    imageBgNew.onload = function () {
-    var gameBackground = true;
      if(gameBackground){
 		var pat = _0x16b27b.createPattern(imageBgNew, "repeat");
 		_0x16b27b.rect(0, 0, canvasWidth, canvasHeight);
 		_0x16b27b.fillStyle = pat;
 		_0x16b27b.fill();}
-     }
 
     _0x7ac7be == true
       ? (_0x16b27b.globalAlpha = 0.6)
