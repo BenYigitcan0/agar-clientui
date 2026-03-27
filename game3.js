@@ -114,26 +114,26 @@ const panelL = document.querySelector(".main-login-area-left");
 const skinPanel = document.querySelector("#mlartb-skin-panel");
 const leftPanelsArea = document.querySelector(".main-login-area-left-panel-box");
 const imageBgs = document.querySelectorAll(".circle");
+var imageBgNew = new Image();
 
 imageBgs.forEach((imageBg) => {
-  let active = false;
-  const imageBgNew = new Image();
-
   imageBg.addEventListener("click", (e) => {
     console.log(e);
 
-    if (!active) {
+    // önce hepsini kapat
+    imageBgs.forEach((el) => el.classList.remove("active"));
+
+    if (!gameBackground) {
       imageBgNew.crossOrigin = "anonymous";
       imageBgNew.src = imageBg.querySelector("img").src;
 
       imageBgNew.onload = function () {
-        active = true;
+        gameBackground = true;
         imageBg.classList.add("active");
       };
     } else {
       imageBgNew.src = "";
-      imageBg.classList.remove("active");
-      active = false;
+      gameBackground = false;
     }
   });
 });
