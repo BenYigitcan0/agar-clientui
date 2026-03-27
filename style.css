@@ -694,3 +694,22 @@ display: none;
                 cursor:pointer;
                 border:2px solid rgba(255,255,255,0.2);
             }
+
+            .circle {
+  border: 3px solid white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden; /* taşan kısmı keser */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* resmi bozmadan doldurur */
+  border-radius: 50%; /* ekstra garanti */
+}
