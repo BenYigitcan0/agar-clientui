@@ -1130,7 +1130,7 @@ function rgbToHex(rgb) {
       node = nodes[_0x5d727f];
       null != node && node.destroy();
     }
-    // ua && 0 == playerCells.length && _0x1dcff8('slow');
+     ua && 0 == playerCells.length && _0x1dcff8('slow'); //???
     playerCells.length == 0 &&
       false == true &&
       ((_0x370936 = 0), (_0x3d769c = 0));
