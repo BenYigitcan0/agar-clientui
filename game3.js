@@ -199,7 +199,7 @@ function rgbToHex(rgb) {
                     setTimeout(fukherriteindapussie, imlost);
             }
           });
-                  window.addEventListener("key", (e) => {
+                  window.addEventListener("keyup", (e) => {
           if (event.keyCode == 87) {
         Feed = false;
     }
