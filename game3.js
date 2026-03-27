@@ -73,8 +73,14 @@ function getScript(_0x353d13, _0x2d7ad3) {
     selectskinmodalclose();
   };
   _0x1154df.setSkinListClick = function (_0x17415e) {
+    if(_0x17415e < 395){
     document.getElementById("defaultSkin").src =
       "https://agar.live/skins/" + _0x17415e + ".png";
+    } else {
+          if(_0x17415e == 396){
+          document.getElementById("defaultSkin").src =
+      "https://cdn.agarz.com/!eyeless_jack!.png";
+    }
     closeSkinPage();
     localStorage.skin = _0x17415e;
     selectSkinName = _0x17415e;
