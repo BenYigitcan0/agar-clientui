@@ -190,6 +190,7 @@ function rgbToHex(rgb) {
         };
 
         var Feed = false;
+        var imlost = 25;
         window.addEventListener("keydown", (e) => {
             if (e.keyCode == 89) {
               playGame();
