@@ -1197,13 +1197,13 @@ document.getElementById("idSkinList").innerHTML = `
     <img class="skin_img" onclick="setSkinListClick('398')" rel="398" src="https://cdn.agarz.com/ado148.png">
 </div>
 <div class="mlartb-skin-box">
-    <img class="skin_img" onclick="setSkinListClick('399')" rel="399" src= "2wCEAAkGBxISEhUTEhMVFhUXGBgXFRgVFhUXGBUYFhUYFhUYFhgYHSggGBolGxcVITEhJSkrLi4uGCAzODMsNygtLisBCgoKDQ0OFRAPFSsdFR0rKy0rLS0tKysrLS0tLS0rLSs3LS0tLS0tLS0tKystKystLSs3LS03LS0tNy0rKystK">
+    <img class="skin_img" onclick="setSkinListClick('399')" rel="399" src= "https://cdn.agarz.com/ata.png">
 </div>
 <div class="mlartb-skin-box">
-    <img class="skin_img" onclick="setSkinListClick('400')" rel="400" src="https://cdn.agarz.com/!eyeless_jack!.png">
+    <img class="skin_img" onclick="setSkinListClick('400')" rel="400" src="https://cdn.agarz.com/ataturk-buyuk.png">
 </div>
 <div class="mlartb-skin-box">
-    <img class="skin_img" onclick="setSkinListClick('401')" rel="401" src="https://agar.live/skins/401.png">
+    <img class="skin_img" onclick="setSkinListClick('401')" rel="401" src="https://cdn.agarz.com/atat%C3%BCrk.png">
 </div>
 <div class="mlartb-skin-box">
     <img class="skin_img" onclick="setSkinListClick('402')" rel="402" src="https://agar.live/skins/402.png">

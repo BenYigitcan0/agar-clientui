@@ -24,7 +24,7 @@ function appendHtmlChild() {
   localStorage.skin != undefined &&
   localStorage.skin != null
     ? ((document.getElementById("defaultSkin").src =
-        localStorage.skin == 396 ? "https://cdn.agarz.com/!eyeless_jack!.png" : localStorage.skin == 397 ? "https://cdn.agarz.com/!kanaki!.png" : localStorage.skin == 398 ? "https://cdn.agarz.com/ado148.png" : localStorage.skin == 399 ? "2wCEAAkGBxISEhUTEhMVFhUXGBgXFRgVFhUXGBUYFhUYFhUYFhgYHSggGBolGxcVITEhJSkrLi4uGCAzODMsNygtLisBCgoKDQ0OFRAPFSsdFR0rKy0rLS0tKysrLS0tLS0rLSs3LS0tLS0tLS0tKystKystLSs3LS03LS0tNy0rKystK" : localStorage.skin == 400 ? "https://cdn.agarz.com/!eyeless_jack!.png" : "https://agar.live/skins/" + localStorage.skin + ".png"),
+        localStorage.skin == 396 ? "https://cdn.agarz.com/!eyeless_jack!.png" : localStorage.skin == 397 ? "https://cdn.agarz.com/!kanaki!.png" : localStorage.skin == 398 ? "https://cdn.agarz.com/ado148.png" : localStorage.skin == 399 ? "https://cdn.agarz.com/ata.png" : localStorage.skin == 400 ? "https://cdn.agarz.com/ataturk-buyuk.png" : localStorage.skin == 401 ? "https://cdn.agarz.com/atat%C3%BCrk.png" : "https://agar.live/skins/" + localStorage.skin + ".png"),
       (selectSkinName = localStorage.skin))
     : (document.getElementById("defaultSkin").src =
         "https://agar.live/skins/361.png");
@@ -88,10 +88,13 @@ function getScript(_0x353d13, _0x2d7ad3) {
       "https://cdn.agarz.com/ado148.png";
     } else if(_0x17415e == 399){
           document.getElementById("defaultSkin").src =
-     "2wCEAAkGBxISEhUTEhMVFhUXGBgXFRgVFhUXGBUYFhUYFhUYFhgYHSggGBolGxcVITEhJSkrLi4uGCAzODMsNygtLisBCgoKDQ0OFRAPFSsdFR0rKy0rLS0tKysrLS0tLS0rLSs3LS0tLS0tLS0tKystKystLSs3LS03LS0tNy0rKystK";
+     "https://cdn.agarz.com/ata.png";
     } else if(_0x17415e == 400){
           document.getElementById("defaultSkin").src =
-      "https://cdn.agarz.com/!eyeless_jack!.png";
+      "https://cdn.agarz.com/ataturk-buyuk.png";
+    }else if(_0x17415e == 401){
+          document.getElementById("defaultSkin").src =
+      "https://cdn.agarz.com/atat%C3%BCrk.png";
     }
   }
     closeSkinPage();
@@ -2246,7 +2249,7 @@ function getScript(_0x353d13, _0x2d7ad3) {
             ? (!_0x460680.hasOwnProperty(this.skinName) &&
                 ((_0x460680[this.skinName] = new Image()),
                 (_0x460680[this.skinName].src =
-                  parseInt(li[0]) == 396 ? "https://cdn.agarz.com/!eyeless_jack!.png" : parseInt(li[0]) == 397 ? "https://cdn.agarz.com/!kanaki!.png" : parseInt(li[0]) == 398 ? "https://cdn.agarz.com/ado148.png" : parseInt(li[0]) == 399 ? "2wCEAAkGBxISEhUTEhMVFhUXGBgXFRgVFhUXGBUYFhUYFhUYFhgYHSggGBolGxcVITEhJSkrLi4uGCAzODMsNygtLisBCgoKDQ0OFRAPFSsdFR0rKy0rLS0tKysrLS0tLS0rLSs3LS0tLS0tLS0tKystKystLSs3LS03LS0tNy0rKystK" : parseInt(li[0]) == 400 ? "https://cdn.agarz.com/!eyeless_jack!.png" : "https://agar.live/skins/" + li[0] + ".png"),
+                  parseInt(li[0]) == 396 ? "https://cdn.agarz.com/!eyeless_jack!.png" : parseInt(li[0]) == 397 ? "https://cdn.agarz.com/!kanaki!.png" : parseInt(li[0]) == 398 ? "https://cdn.agarz.com/ado148.png" : parseInt(li[0]) == 399 ? "https://cdn.agarz.com/ata.png" : parseInt(li[0]) == 400 ? "https://cdn.agarz.com/ataturk-buyuk.png" : parseInt(li[0]) == 401 ? "https://cdn.agarz.com/atat%C3%BCrk.png" : "https://agar.live/skins/" + li[0] + ".png"),
                 (_0x460680[this.skinName].onload = function () {
                   _0x4837a9[this.src] = true;
                 })),
