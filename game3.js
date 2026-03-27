@@ -49,7 +49,7 @@ async function test() {
           ctx: ctx,
           log: console.log,
           alert: alert,
-          Window,
+          window: window,
           document,
           requestAnimationFrame: requestAnimationFrame
         };
