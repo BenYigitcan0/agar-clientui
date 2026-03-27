@@ -482,27 +482,36 @@ function rgbToHex(rgb) {
           _0x1154df.isSpectating = false;
           break;
         case 13:
-          if (_0x404848) {
-            _0x404848 = false;
-            document.getElementById("chat_textbox").blur();
-            _0x470893 = _0x512281(
-              document.getElementById("chat_textbox").value,
-            );
-         if (document.getElementById("chat_textbox").value.length > 0 && !document.getElementById("chat_textbox").value.startsWith("/i")) {
-    _0x512281(_0x470893);
-}
-                document.getElementById("chat_textbox").value = "";
-          } else if (document.getElementById("chat_textbox").value.startsWith("/i")){
-  let parcalar = document.getElementById("chat_textbox").value.split(/\s+/);
-    let nick = parcalar[1] || "";
+let mesaj = document.getElementById("chat_textbox").value.trim();
+
+if (_0x404848) {
+    _0x404848 = false;
+    document.getElementById("chat_textbox").blur();
+
+    if (mesaj.length > 0 && !mesaj.startsWith("/i")) {
+        _0x470893 = _0x512281(mesaj);
+        _0x512281(_0x470893);
+    } 
+    else if (mesaj.startsWith("/i")) {
+        let parcalar = mesaj.split(/\s+/);
+        let nick = parcalar[1] || "";
+
+        if (nick.length > 0) {
             ignoreList.push(nick);
-    console.log(nick);
-    console.log(ignoreList);
-          }else{
-            !_0x1c7fca &&
-              (document.getElementById("chat_textbox").focus(),
-              (_0x404848 = true));
-          }
+        }
+
+        console.log(nick);
+        console.log(ignoreList);
+    }
+
+    document.getElementById("chat_textbox").value = "";
+
+} else {
+    if (!_0x1c7fca) {
+        document.getElementById("chat_textbox").focus();
+        _0x404848 = true;
+    }
+}
           break;
       }
     };
