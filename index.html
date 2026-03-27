@@ -237,8 +237,13 @@
 
             <input type="color" id="realColor1" hidden>
             <input type="color" id="realColor2" hidden>
+            <div class="bgContainer">
             <div id="bg" class="circle">
   <img src="imgs/hex2.webp" alt="img">
+</div>
+            <div id="bg2" class="circle">
+  <img src="imgs/hex.webp" alt="img">
+</div>
 </div>
             <input type="text" id="urlInput" placeholder="Enter background URL">
 
@@ -329,8 +334,8 @@
         cursor: pointer;
         font-size: 17px;
         position: absolute;
-        color: black;
-        background-color: #ffcc99;
+        color: #fff;
+        background-color: #ff0000;
         padding: 5px 10px;
         z-index: 1;
         bottom: 10px;
@@ -343,15 +348,15 @@
         -webkit-touch-callout: none;
       "
       onclick="clearChat()"
-      >Clear Chat</label
+      >Chat Temizle</label
     >
     <label
       style="
         cursor: pointer;
         font-size: 17px;
         position: absolute;
-        color: black;
-        background-color: #ffcc99;
+        color: #fff;
+        background-color: #ff0000;
         padding: 5px 10px;
         z-index: 1;
         bottom: 10px;
@@ -364,7 +369,7 @@
         -webkit-touch-callout: none;
       "
       onclick="shareLocation()"
-      >Share Location</label
+      >Konum Gönder</label
     >
     <input
       type="text"
