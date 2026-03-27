@@ -189,6 +189,11 @@ function rgbToHex(rgb) {
             bLength = e.target.value;
         };
 
+        window.addEventListener("keydown", (e) => {
+            if (e.keyCode == 89) {
+              playGame();
+            }
+          });
 
   function _0x1d0b7d(
     _0x40b698,
