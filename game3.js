@@ -110,7 +110,9 @@ const skinPanel = document.querySelector("#mlartb-skin-panel");
 const leftPanelsArea = document.querySelector(".main-login-area-left-panel-box");
 
 
-var imageBgNew;
+var imageBgNew = new Image();
+imageBgNew.crossOrigin = 'anonymous';
+imageBgNew.src = "https://agar.live/skins/76.png";
   input.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     const url = input.value.trim();
