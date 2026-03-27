@@ -109,7 +109,7 @@ const panelR = document.querySelector(".main-login-area-right");
 const panelL = document.querySelector(".main-login-area-left");
 const skinPanel = document.querySelector("#mlartb-skin-panel");
 const leftPanelsArea = document.querySelector(".main-login-area-left-panel-box");
-const imageBg = document.querySelector("#bg");
+const imageBg = document.querySelector(".circle");
 var imageBgNew = new Image();
 
 imageBg.addEventListener('click', () => {
@@ -121,6 +121,7 @@ imageBgNew.src = "imgs/hex2.webp";
           imageBg.classList.add('active');
       };
     } else {
+      imageBgNew.src = "";
       imageBg.classList.remove('active');
       gameBackground = false;
     }
