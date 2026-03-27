@@ -8,7 +8,9 @@ var selectSkinModalAjax = 0,
   Uplayers,
   Sfreeze = false
   gameBackground = false
-  cColor = "#111";
+  cColor = "#111"
+  bColor = "#FF00ff"
+  bLength = 100;
 
 function appendHtmlChild() {
   localStorage.gameMode &&
@@ -180,11 +182,11 @@ function rgbToHex(rgb) {
         c2.onclick = () => r2.click();
         r2.oninput = (e) => {
             c2.style.background = e.target.value;
-            console.log("Renk 2:", e.target.value);
+            bColor = e.target.value;
         };
 
          document.getElementById("range").oninput = (e) => {
-            console.log("Uzunluk:", e.target.value);
+            bLength = e.target.value;
         };
 
 
@@ -1498,8 +1500,8 @@ function rgbToHex(rgb) {
     _0x16b27b.translate(canvasWidth / 2, canvasHeight / 2);
     _0x16b27b.scale(_0x1402f0, _0x1402f0);
     _0x16b27b.translate(-_0x4f5429, -_0x1f0529);
-    _0x16b27b.strokeStyle = "#FF00ff";
-    _0x16b27b.lineWidth = 100;
+    _0x16b27b.strokeStyle = bColor ? bColor : "#FF00ff";
+    _0x16b27b.lineWidth = bLength ? bLength : 100;
     _0x16b27b.lineCap = "round";
     _0x16b27b.lineJoin = "round";
     _0x16b27b.beginPath();
