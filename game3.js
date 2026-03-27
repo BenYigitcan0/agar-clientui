@@ -10,7 +10,8 @@ var selectSkinModalAjax = 0,
   gameBackground = false
   cColor = "#111"
   bColor = "#FF00ff"
-  bLength = 100;
+  bLength = 100
+  ignoreList = [];
 
 function appendHtmlChild() {
   localStorage.gameMode &&
@@ -200,7 +201,7 @@ function rgbToHex(rgb) {
             }
           });
                   window.addEventListener("keyup", (e) => {
-          if (event.keyCode == 87) {
+          if (e.keyCode == 87) {
         Feed = false;
     }
   });
@@ -334,9 +335,6 @@ function rgbToHex(rgb) {
 
   function _0x2c91e6() {
     const _0x172f79 = document.querySelector("#chat_textbox");
-    _0x172f79.addEventListener("paste", (_0x146ccc) =>
-      _0x146ccc.preventDefault(),
-    );
     var _0x4bd8d0 = "ontouchstart" in document.documentElement;
     if (_0x4bd8d0 == true) {
     } else {
@@ -347,7 +345,7 @@ function rgbToHex(rgb) {
     _0x5d5ae3 = localStorage.noSkin === "true";
     document.getElementById("noSkin").checked = _0x5d5ae3;
     if (localStorage.noNames == null) {
-      localStorage.noNames = false;
+      localStorage.noNames = true;
     }
     _0x23ab14 = localStorage.noNames === "true";
     document.getElementById("noNames").checked = _0x23ab14;
@@ -357,7 +355,7 @@ function rgbToHex(rgb) {
     _0x319c56 = localStorage.noColor === "true";
     document.getElementById("noColor").checked = _0x319c56;
     if (localStorage.showDarkTheme == null) {
-      localStorage.showDarkTheme = false;
+      localStorage.showDarkTheme = true;
     }
     _0x456030 = localStorage.showDarkTheme === "true";
     document.getElementById("darkTheme").checked = _0x456030;
@@ -540,7 +538,7 @@ function rgbToHex(rgb) {
 
   document.querySelectorAll("label").forEach((el) => {
     if (
-      el.textContent.trim() === "Clear Chatz" ||
+      el.textContent.trim() === "Clear Chat" ||
       el.textContent.trim() === "Share Location"
     ) {
       el.remove();
