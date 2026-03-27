@@ -1188,7 +1188,7 @@ document.getElementById("idSkinList").innerHTML = `
     <img class="skin_img" onclick="setSkinListClick('395')" rel="395" src="https://agar.live/skins/395.png">
 </div>
 <div class="mlartb-skin-box">
-    <img class="skin_img" onclick="setSkinListClick('396')" rel="396" src="https://agar.live/skins/396.png">
+    <img class="skin_img" onclick="setSkinListClick('396')" rel="396" src="https://cdn.agarz.com/!eyeless_jack!.png">
 </div>
 <div class="mlartb-skin-box">
     <img class="skin_img" onclick="setSkinListClick('397')" rel="397" src="https://agar.live/skins/397.png">
@@ -1215,7 +1215,7 @@ document.getElementById("idSkinList").innerHTML = `
     <img class="skin_img" onclick="setSkinListClick('404')" rel="404" src="https://agar.live/skins/404.png">
 </div>
 <div class="mlartb-skin-box">
-    <img class="skin_img" onclick="setSkinListClick('405')" rel="405" src="https://cdn.agarz.com/!eyeless_jack!.png">
+    <img class="skin_img" onclick="setSkinListClick('405')" rel="405" src="https://agar.live/skins/405.png">
 </div>
 <div class="mlartb-skin-box">
     <img class="skin_img" onclick="setSkinListClick('600')" rel="600" src="https://agar.live/skins/600.png">
