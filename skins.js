@@ -1215,22 +1215,7 @@ document.getElementById("idSkinList").innerHTML = `
     <img class="skin_img" onclick="setSkinListClick('404')" rel="404" src="https://agar.live/skins/404.png">
 </div>
 <div class="mlartb-skin-box">
-    <img class="skin_img" onclick="setSkinListClick('405')" rel="405" src="https://agar.live/skins/405.png">
-</div>
-<div class="mlartb-skin-box">
-    <img class="skin_img" onclick="setSkinListClick('406')" rel="406" src="https://agar.live/skins/406.png">
-</div>
-<div class="mlartb-skin-box">
-    <img class="skin_img" onclick="setSkinListClick('407')" rel="407" src="https://agar.live/skins/407.png">
-</div>
-<div class="mlartb-skin-box">
-    <img class="skin_img" onclick="setSkinListClick('408')" rel="408" src="https://agar.live/skins/408.png">
-</div>
-<div class="mlartb-skin-box">
-    <img class="skin_img" onclick="setSkinListClick('409')" rel="409" src="https://agar.live/skins/409.png">
-</div>
-<div class="mlartb-skin-box">
-    <img class="skin_img" onclick="setSkinListClick('410')" rel="410" src="https://agar.live/skins/410.png">
+    <img class="skin_img" onclick="setSkinListClick('405')" rel="405" src="https://cdn.agarz.com/!eyeless_jack!.png">
 </div>
 <div class="mlartb-skin-box">
     <img class="skin_img" onclick="setSkinListClick('600')" rel="600" src="https://agar.live/skins/600.png">
