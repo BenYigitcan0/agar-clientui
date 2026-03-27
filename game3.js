@@ -488,17 +488,35 @@ if (_0x404848) {
     _0x404848 = false;
     document.getElementById("chat_textbox").blur();
 
-    if (mesaj.length > 0 && !mesaj.startsWith("/i")) {
+    if (mesaj.length > 0 && !(mesaj.startsWith("/"))) {
+          document.getElementById("chat_textbox").value = "";
         _0x470893 = _0x512281(mesaj);
         _0x512281(_0x470893);
     } 
-    else if (mesaj.startsWith("/i")) {
-        let parcalar = mesaj.split(/\s+/);
-        let nick = parcalar[1] || "";
+    else if (mesaj.startsWith("/")) {
+    let parcalar = mesaj.split(/\s+/);
+    let komut = parcalar[0];
+    let nick = parcalar.slice(1).join(" "); // çok kelimeli destek
+    let temizNick = temizleNick(nick);
 
-        if (nick.length > 0) {
-            ignoreList.push(temizleNick(nick));
+    // /i → ekle
+    if (komut === "/i") {
+        if (temizNick && !ignoreList.includes(temizNick)) {
+            ignoreList.push(temizNick);
+            console.log("Eklendi:", temizNick);
         }
+    }
+
+    // /ui → kaldır
+    else if (komut === "/ui") {
+        ignoreList = ignoreList.filter(n => n !== temizNick);
+        console.log("Kaldırıldı:", temizNick);
+    }
+
+    // /list → listele
+    else if (komut === "/list") {
+        console.log("Ignore List:", ignoreList);
+    }
     }
 
     document.getElementById("chat_textbox").value = "";
