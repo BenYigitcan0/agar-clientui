@@ -644,7 +644,6 @@ display: none;
     margin-top: 10px;
 }
 
-/* 🧿 SKIN BOX */
 .mlartb-skin-box {
     border: 1px solid #ff073a;
     padding: 5px;
@@ -652,15 +651,13 @@ display: none;
         border-radius: 50%;
 }
 
-/* skin image */
 .mlartb-skin-box img {
     width: 100%;
     border-radius: 6px;
-        object-fit: cover;   /* düzgün sığdır */
+        object-fit: cover; 
     border-radius: 50%;
 }
 
-/* 🔥 SELECT SKIN BUTTON */
 .mlartb-skin-select-button {
     margin-top: 10px;
     width: 100%;
@@ -669,17 +666,14 @@ display: none;
     border: 2px solid #ff073a !important;
 }
 
-/* hover */
 .mlartb-skin-select-button:hover {
     background: #ff073a !important;
     color: #fff !important;
-
     box-shadow:
         0 0 10px #ff073a,
         0 0 20px #ff073a;
 }
 
-/* hr çizgisini de güzelleştir */
 #mlartb-skin-panel hr {
     border: none;
     height: 1px;
@@ -698,10 +692,10 @@ display: none;
             .circle {
   border: 3px solid white;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  width: 150px;
-  height: 150px;
+                width:50px;
+                height:42px;
   border-radius: 50%;
-  overflow: hidden; /* taşan kısmı keser */
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -710,6 +704,6 @@ display: none;
 .circle img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* resmi bozmadan doldurur */
-  border-radius: 50%; /* ekstra garanti */
+  object-fit: cover;
+  border-radius: 50%;
 }

@@ -109,11 +109,17 @@ const panelR = document.querySelector(".main-login-area-right");
 const panelL = document.querySelector(".main-login-area-left");
 const skinPanel = document.querySelector("#mlartb-skin-panel");
 const leftPanelsArea = document.querySelector(".main-login-area-left-panel-box");
-
-
+const imageBg = document.querySelector("#bg");
 var imageBgNew = new Image();
+
+imageBg.addEventListener('click', () => {
 imageBgNew.crossOrigin = 'anonymous';
 imageBgNew.src = "imgs/hex2.webp";
+      imageBgNew.onload = function () {
+        gameBackground = true;
+      };
+});
+
   input.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     const url = input.value.trim();
@@ -134,12 +140,9 @@ imageBgNew.src = "imgs/hex2.webp";
     leftPanelsArea.style.backgroundSize = 'cover';
     leftPanelsArea.style.backgroundPosition = 'center';
   }
-   imageBgNew = new Image();
-  imageBgNew.crossOrigin = 'anonymous'; // CORS için
-  imageBgNew.src = url;
-      imageBgNew.onload = function () {
-        gameBackground = true;
-      }
+   const img = new Image();
+  img.crossOrigin = 'anonymous'; // CORS için
+  img.src = url;
 }
 });
 
