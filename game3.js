@@ -112,19 +112,23 @@ const leftPanelsArea = document.querySelector(".main-login-area-left-panel-box")
 const imageBg = document.querySelector(".circle");
 var imageBgNew = new Image();
 
+let gameBackground = false; // EKLE
+
 imageBg.addEventListener('click', () => {
-  if (gameBackground) {
-imageBgNew.crossOrigin = 'anonymous';
-imageBgNew.src = "imgs/hex2.webp";
-      imageBgNew.onload = function () {
-        gameBackground = true;
-          imageBg.classList.add('active');
-      };
-    } else {
-      imageBgNew.src = "";
-      imageBg.classList.remove('active');
-      gameBackground = false;
-    }
+  if (!gameBackground) { // BURAYI TERS ÇEVİRDİK
+    imageBgNew.crossOrigin = 'anonymous';
+    imageBgNew.src = "imgs/hex2.webp";
+
+    imageBgNew.onload = function () {
+      gameBackground = true;
+      imageBg.classList.add('active');
+    };
+
+  } else {
+    imageBgNew.src = "";
+    imageBg.classList.remove('active');
+    gameBackground = false;
+  }
 });
 
   input.addEventListener('keydown', (e) => {
