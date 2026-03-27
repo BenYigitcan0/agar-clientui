@@ -1191,16 +1191,16 @@ document.getElementById("idSkinList").innerHTML = `
     <img class="skin_img" onclick="setSkinListClick('396')" rel="396" src="https://cdn.agarz.com/!eyeless_jack!.png">
 </div>
 <div class="mlartb-skin-box">
-    <img class="skin_img" onclick="setSkinListClick('397')" rel="397" src="https://agar.live/skins/397.png">
+    <img class="skin_img" onclick="setSkinListClick('397')" rel="397" src="https://cdn.agarz.com/!kanaki!.png">
 </div>
 <div class="mlartb-skin-box">
-    <img class="skin_img" onclick="setSkinListClick('398')" rel="398" src="https://agar.live/skins/398.png">
+    <img class="skin_img" onclick="setSkinListClick('398')" rel="398" src="https://cdn.agarz.com/ado148.png">
 </div>
 <div class="mlartb-skin-box">
-    <img class="skin_img" onclick="setSkinListClick('399')" rel="399" src="https://agar.live/skins/399.png">
+    <img class="skin_img" onclick="setSkinListClick('399')" rel="399" src= "2wCEAAkGBxISEhUTEhMVFhUXGBgXFRgVFhUXGBUYFhUYFhUYFhgYHSggGBolGxcVITEhJSkrLi4uGCAzODMsNygtLisBCgoKDQ0OFRAPFSsdFR0rKy0rLS0tKysrLS0tLS0rLSs3LS0tLS0tLS0tKystKystLSs3LS03LS0tNy0rKystK">
 </div>
 <div class="mlartb-skin-box">
-    <img class="skin_img" onclick="setSkinListClick('400')" rel="400" src="https://agar.live/skins/400.png">
+    <img class="skin_img" onclick="setSkinListClick('400')" rel="400" src="https://cdn.agarz.com/!eyeless_jack!.png">
 </div>
 <div class="mlartb-skin-box">
     <img class="skin_img" onclick="setSkinListClick('401')" rel="401" src="https://agar.live/skins/401.png">

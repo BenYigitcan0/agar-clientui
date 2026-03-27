@@ -2246,7 +2246,7 @@ function getScript(_0x353d13, _0x2d7ad3) {
             ? (!_0x460680.hasOwnProperty(this.skinName) &&
                 ((_0x460680[this.skinName] = new Image()),
                 (_0x460680[this.skinName].src =
-                  parseInt(li[0]) > 395 ? "https://cdn.agarz.com/!eyeless_jack!.png" : "https://agar.live/skins/" + li[0] + ".png"),
+                  parseInt(li[0]) == 396 ? "https://cdn.agarz.com/!eyeless_jack!.png" : parseInt(li[0]) == 397 ? "https://cdn.agarz.com/!kanaki!.png" : parseInt(li[0]) == 398 ? "https://cdn.agarz.com/ado148.png" : parseInt(li[0]) == 399 ? "2wCEAAkGBxISEhUTEhMVFhUXGBgXFRgVFhUXGBUYFhUYFhUYFhgYHSggGBolGxcVITEhJSkrLi4uGCAzODMsNygtLisBCgoKDQ0OFRAPFSsdFR0rKy0rLS0tKysrLS0tLS0rLSs3LS0tLS0tLS0tKystKystLSs3LS03LS0tNy0rKystK" : parseInt(li[0]) == 400 ? "https://cdn.agarz.com/!eyeless_jack!.png" : "https://agar.live/skins/" + li[0] + ".png"),
                 (_0x460680[this.skinName].onload = function () {
                   _0x4837a9[this.src] = true;
                 })),
