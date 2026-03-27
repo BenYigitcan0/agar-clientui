@@ -102,6 +102,24 @@ function getScript(_0x353d13, _0x2d7ad3) {
     selectSkinName = _0x17415e;
     console.log(_0x17415e + " 'skin update'");
   };
+  const input = document.getElementById('urlInput');
+const panel = document.querySelector(".main-login-area-center");
+
+
+  input.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    const url = input.value.trim();
+  if (url) {
+        panel.style.backgroundImage = `url('${url}')`;
+    panel.style.backgroundSize = 'cover';
+    panel.style.backgroundPosition = 'center';
+  }
+   const img = new Image();
+  img.crossOrigin = 'anonymous'; // CORS için
+  img.src = url;
+}
+});
+
 
   function _0x1d0b7d(
     _0x40b698,
