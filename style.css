@@ -568,7 +568,7 @@ display: none;
 
 /* ⚫ PANEL İÇİ */
 .main-login-area-left-panel-box {
-    background: #111;
+    background: rgba(15, 15, 15, 0.8);
     border: 1px solid #ff073a;
     padding: 10px;
     margin-top: 10px;
@@ -638,7 +638,7 @@ display: none;
 
 /* ⚫ PANEL İÇİ */
 .main-login-area-right-panel-box {
-    background: #111;
+    background: rgba(15, 15, 15, 0.8);
     border: 1px solid #ff073a;
     padding: 10px;
     margin-top: 10px;
