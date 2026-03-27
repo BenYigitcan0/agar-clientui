@@ -430,7 +430,7 @@ body {
 
 /* 🖤 Ana alan */
 .main-login-area-center {
-    background: #0d0d0d;
+    background: rgba(13, 13, 13, 0.8);
     border: 3px solid #ff073a;
         height: 528px;
     border-radius: 12px;
@@ -544,7 +544,7 @@ display: none;
 
 /* 🖤 LEFT PANEL ANA KUTU */
 .main-login-area-left {
-    background: #0d0d0d;
+    background: rgba(13, 13, 13, 0.8);
     border: 2px solid #ff073a;
     border-radius: 10px;
     padding: 10px;
@@ -607,7 +607,7 @@ display: none;
 
 /* 🖤 RIGHT PANEL ANA */
 .main-login-area-right {
-    background: #0d0d0d;
+      background: rgba(13, 13, 13, 0.8);
     border: 2px solid #ff073a;
     border-radius: 10px;
     padding: 10px;
