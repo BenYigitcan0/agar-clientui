@@ -7,7 +7,8 @@ var selectSkinModalAjax = 0,
   Uuptime,
   Uplayers,
   Sfreeze = false
-  gameBackground = false;
+  gameBackground = false
+  cColor = "#111";
 
 function appendHtmlChild() {
   localStorage.gameMode &&
@@ -155,13 +156,21 @@ imageBg.addEventListener('click', () => {
 }
 });
 
+function rgbToHex(rgb) {
+  const result = rgb.match(/\d+/g);
+  return "#" + result.map(x => {
+    const hex = parseInt(x).toString(16);
+    return hex.length === 1 ? "0" + hex : hex;
+  }).join("");
+}
+
    const c1 = document.getElementById("color1");
         const r1 = document.getElementById("realColor1");
 
         c1.onclick = () => r1.click();
           r1.oninput = (e) => {
             c1.style.background = e.target.value;
-            console.log("Renk 1:", e.target.value);
+            cColor = e.target.value;
         };
 
         // COLOR 2 (farklı görev)
@@ -1427,7 +1436,7 @@ imageBg.addEventListener('click', () => {
       fps = 1 / delta;
     }
     _0x16b27b.clearRect(0, 0, canvasWidth, canvasHeight);
-    _0x16b27b.fillStyle = _0x456030 ? "#111" : "#fff";
+    _0x16b27b.fillStyle = _0x456030 ? cColor : "#fff";
     _0x16b27b.fillRect(0, 0, canvasWidth, canvasHeight);
     var _0x448cd4,
       _0x56c4ef = Date.now();
