@@ -490,8 +490,8 @@ function rgbToHex(rgb) {
             );
          if (document.getElementById("chat_textbox").value.length > 0 && !document.getElementById("chat_textbox").value.startsWith("/i")) {
     _0x512281(_0x470893);
+                document.getElementById("chat_textbox").value = "";
 }
-            document.getElementById("chat_textbox").value = "";
           } else if (document.getElementById("chat_textbox").value.startsWith("/i")){
   let parcalar = document.getElementById("chat_textbox").split(/\s+/);
     let nick = parcalar[1] || "";
