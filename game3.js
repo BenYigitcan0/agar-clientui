@@ -1807,10 +1807,10 @@ function getScript(_0x353d13, _0x2d7ad3) {
     this.setName(_0x2c8a27);
   }
 
-  //wsServer = new WebSocket("http:localhost:8080");
-  wsServer = new WebSocket(
+  wsServer = new WebSocket("wss://my-websocket-server.prosuo15.workers.dev/websocket");
+  /*wsServer = new WebSocket(
     "wss://f5b9de29-1eda-46f3-9126-a3d68eff726b-00-j12x6nttewdh.worf.replit.dev",
-  );
+  );*/
   wsServer.binaryType = "arraybuffer";
   wsServer.onopen = () => console.log("WS Open");
   wsServer.onmessage = mywsms;
