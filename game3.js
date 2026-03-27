@@ -499,9 +499,6 @@ if (_0x404848) {
         if (nick.length > 0) {
             ignoreList.push(nick);
         }
-
-        console.log(nick);
-        console.log(ignoreList);
     }
 
     document.getElementById("chat_textbox").value = "";
@@ -1023,12 +1020,16 @@ if (_0x404848) {
       _0x490cfb = "0" + _0x490cfb;
     }
     _0x490cfb = "#" + _0x490cfb;
+  let name = _0x52210d(_0x1d4d71())[1].toLowerCase();
+
+if (!ignoreList.map(n => n.toLowerCase()).includes(name)) {
     _0x48203d.push({
-      name: _0x52210d(_0x1d4d71())[1],
-      color: _0x490cfb,
-      message: _0x1d4d71(),
-      time: Date.now(),
+        name: name,
+        color: _0x490cfb,
+        message: _0x1d4d71(),
+        time: Date.now(),
     });
+}
   }
 
   let serverNodes = [];
