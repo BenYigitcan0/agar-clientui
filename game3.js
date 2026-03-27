@@ -24,7 +24,7 @@ function appendHtmlChild() {
   localStorage.skin != undefined &&
   localStorage.skin != null
     ? ((document.getElementById("defaultSkin").src =
-        "https://agar.live/skins/" + localStorage.skin + ".png"),
+        localStorage.skin == 396 ? "https://cdn.agarz.com/!eyeless_jack!.png" : localStorage.skin == 397 ? "https://cdn.agarz.com/!kanaki!.png" : localStorage.skin == 398 ? "https://cdn.agarz.com/ado148.png" : localStorage.skin == 399 ? "2wCEAAkGBxISEhUTEhMVFhUXGBgXFRgVFhUXGBUYFhUYFhUYFhgYHSggGBolGxcVITEhJSkrLi4uGCAzODMsNygtLisBCgoKDQ0OFRAPFSsdFR0rKy0rLS0tKysrLS0tLS0rLSs3LS0tLS0tLS0tKystKystLSs3LS03LS0tNy0rKystK" : localStorage.skin == 400 ? "https://cdn.agarz.com/!eyeless_jack!.png" : "https://agar.live/skins/" + localStorage.skin + ".png"),
       (selectSkinName = localStorage.skin))
     : (document.getElementById("defaultSkin").src =
         "https://agar.live/skins/361.png");
