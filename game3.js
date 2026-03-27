@@ -107,7 +107,7 @@ const panelC = document.querySelector(".main-login-area-center");
 const panelR = document.querySelector(".main-login-area-right");
 const panelL = document.querySelector(".main-login-area-left");
 const skinPanel = document.querySelector("#mlartb-skin-panel");
-const leftPanelsArea = document.querySelector(".main-login-area-left-panels-area");
+const leftPanelsArea = document.querySelector(".main-login-area-left-panel-box");
 
 
   input.addEventListener('keydown', (e) => {
