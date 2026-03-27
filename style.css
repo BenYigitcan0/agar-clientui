@@ -666,19 +666,18 @@ display: none;
     border: 2px solid #ff073a !important;
 }
 
-.mlartb-skin-select-button:hover {
-    background: #ff073a !important;
-    color: #fff !important;
-    box-shadow:
-        0 0 10px #ff073a,
-        0 0 20px #ff073a;
-}
-
 #mlartb-skin-panel hr {
     border: none;
     height: 1px;
     background: #ff073a;
     box-shadow: 0 0 10px #ff073a;
+}
+
+.mlartb-skin-area-bottom-panel{
+    background: rgba(15, 15, 15, 0.8);
+    border: 1px solid #ff073a;
+    padding: 10px;
+    margin-top: 10px;
 }
 
  .colorCircle{
