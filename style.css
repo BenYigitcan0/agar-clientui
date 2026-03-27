@@ -686,3 +686,11 @@ display: none;
     background: #ff073a;
     box-shadow: 0 0 10px #ff073a;
 }
+
+ .colorCircle{
+                width:42px;
+                height:42px;
+                border-radius:50%;
+                cursor:pointer;
+                border:2px solid rgba(255,255,255,0.2);
+            }
