@@ -49,6 +49,8 @@ async function test() {
           ctx: ctx,
           log: console.log,
           alert: alert,
+          Window,
+          document,
           requestAnimationFrame: requestAnimationFrame
         };
         
