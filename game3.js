@@ -112,10 +112,8 @@ const leftPanelsArea = document.querySelector(".main-login-area-left-panel-box")
 const imageBg = document.querySelector(".circle");
 var imageBgNew = new Image();
 
-let gameBackground = false; // EKLE
-
 imageBg.addEventListener('click', () => {
-  if (!gameBackground) { // BURAYI TERS ÇEVİRDİK
+  if (!gameBackground) {
     imageBgNew.crossOrigin = 'anonymous';
     imageBgNew.src = "imgs/hex2.webp";
 
@@ -156,6 +154,29 @@ imageBg.addEventListener('click', () => {
   img.src = url;
 }
 });
+
+   const c1 = document.getElementById("color1");
+        const r1 = document.getElementById("realColor1");
+
+        c1.onclick = () => r1.click();
+          r1.oninput = (e) => {
+            c1.style.background = e.target.value;
+            console.log("Renk 1:", e.target.value);
+        };
+
+        // COLOR 2 (farklı görev)
+        const c2 = document.getElementById("color2");
+        const r2 = document.getElementById("realColor2");
+
+        c2.onclick = () => r2.click();
+        r2.oninput = (e) => {
+            c2.style.background = e.target.value;
+            console.log("Renk 2:", e.target.value);
+        };
+
+         document.getElementById("range").oninput = (e) => {
+            console.log("Uzunluk:", e.target.value);
+        };
 
 
   function _0x1d0b7d(
