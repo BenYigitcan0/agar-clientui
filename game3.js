@@ -497,7 +497,7 @@ if (_0x404848) {
         let nick = parcalar[1] || "";
 
         if (nick.length > 0) {
-            ignoreList.push(nick);
+            ignoreList.push(temizleNick(nick));
         }
     }
 
@@ -1020,17 +1020,31 @@ if (_0x404848) {
       _0x490cfb = "0" + _0x490cfb;
     }
     _0x490cfb = "#" + _0x490cfb;
-  let name = _0x52210d(_0x1d4d71())[1].toLowerCase();
+let rawName = _0x52210d(_0x1d4d71())[1];
+let temizName = temizleNick(rawName);
 
-if (!ignoreList.map(n => n.toLowerCase()).includes(name)) {
+let ignoreKontrol = ignoreList.some(n =>
+    temizleNick(n) === temizName
+);
+
+if (!ignoreKontrol) {
     _0x48203d.push({
-        name: name,
+        name: rawName,
         color: _0x490cfb,
         message: _0x1d4d71(),
         time: Date.now(),
     });
 }
   }
+
+  function temizleNick(nick) {
+    return nick
+        .toLowerCase()
+        .normalize("NFKD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^\p{L}\p{N}]/gu, "")
+        .trim();
+}
 
   let serverNodes = [];
   let localNodes = [];
