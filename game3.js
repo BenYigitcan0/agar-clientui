@@ -81,6 +81,7 @@ function getScript(_0x353d13, _0x2d7ad3) {
           document.getElementById("defaultSkin").src =
       "https://cdn.agarz.com/!eyeless_jack!.png";
     }
+  }
     closeSkinPage();
     localStorage.skin = _0x17415e;
     selectSkinName = _0x17415e;
