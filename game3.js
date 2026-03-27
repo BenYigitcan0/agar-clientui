@@ -103,16 +103,24 @@ function getScript(_0x353d13, _0x2d7ad3) {
     console.log(_0x17415e + " 'skin update'");
   };
   const input = document.getElementById('urlInput');
-const panel = document.querySelector(".main-login-area-center");
+const panelC = document.querySelector(".main-login-area-center");
+const panelR = document.querySelector(".main-login-area-right");
+const panelL = document.querySelector(".main-login-area-left");
 
 
   input.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     const url = input.value.trim();
   if (url) {
-        panel.style.backgroundImage = `url('${url}')`;
-    panel.style.backgroundSize = 'cover';
-    panel.style.backgroundPosition = 'center';
+        panelC.style.backgroundImage = `url('${url}')`;
+    panelC.style.backgroundSize = 'cover';
+    panelC.style.backgroundPosition = 'center';
+            panelR.style.backgroundImage = `url('${url}')`;
+    panelR.style.backgroundSize = 'cover';
+    panelR.style.backgroundPosition = 'center';
+            panelL.style.backgroundImage = `url('${url}')`;
+    panelL.style.backgroundSize = 'cover';
+    panelL.style.backgroundPosition = 'center';
   }
    const img = new Image();
   img.crossOrigin = 'anonymous'; // CORS için
