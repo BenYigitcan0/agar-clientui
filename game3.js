@@ -113,25 +113,29 @@ const panelR = document.querySelector(".main-login-area-right");
 const panelL = document.querySelector(".main-login-area-left");
 const skinPanel = document.querySelector("#mlartb-skin-panel");
 const leftPanelsArea = document.querySelector(".main-login-area-left-panel-box");
-const imageBg = document.querySelector(".circle");
-var imageBgNew = new Image();
+const imageBgs = document.querySelectorAll(".circle");
 
-imageBg.addEventListener('click', (e) => {
- console.log(e);
-  if (!gameBackground) {
-    imageBgNew.crossOrigin = 'anonymous';
-    imageBgNew.src = "imgs/hex2.webp";
+imageBgs.forEach((imageBg) => {
+  let active = false;
+  const imageBgNew = new Image();
 
-    imageBgNew.onload = function () {
-      gameBackground = true;
-      imageBg.classList.add('active');
-    };
+  imageBg.addEventListener("click", (e) => {
+    console.log(e);
 
-  } else {
-    imageBgNew.src = "";
-    imageBg.classList.remove('active');
-    gameBackground = false;
-  }
+    if (!active) {
+      imageBgNew.crossOrigin = "anonymous";
+      imageBgNew.src = imageBg.querySelector("img").src;
+
+      imageBgNew.onload = function () {
+        active = true;
+        imageBg.classList.add("active");
+      };
+    } else {
+      imageBgNew.src = "";
+      imageBg.classList.remove("active");
+      active = false;
+    }
+  });
 });
 
   input.addEventListener('keydown', (e) => {
