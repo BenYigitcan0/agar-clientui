@@ -110,6 +110,7 @@ const skinPanel = document.querySelector("#mlartb-skin-panel");
 const leftPanelsArea = document.querySelector(".main-login-area-left-panel-box");
 
 
+var imageBgNew;
   input.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     const url = input.value.trim();
@@ -130,9 +131,9 @@ const leftPanelsArea = document.querySelector(".main-login-area-left-panel-box")
     leftPanelsArea.style.backgroundSize = 'cover';
     leftPanelsArea.style.backgroundPosition = 'center';
   }
-   const img = new Image();
-  img.crossOrigin = 'anonymous'; // CORS için
-  img.src = url;
+   imageBgNew = new Image();
+  imageBgNew.crossOrigin = 'anonymous'; // CORS için
+  imageBgNew.src = url;
 }
 });
 
@@ -1458,6 +1459,14 @@ const leftPanelsArea = document.querySelector(".main-login-area-left-panel-box")
     _0x16b27b.lineTo(_0x22b0f0, _0x13322c);
     _0x16b27b.closePath();
     _0x16b27b.stroke();
+
+    var gameBackground = true;
+     if(gameBackground){
+		var pat = ctx.createPattern(imageBgNew, "repeat");
+		ctx.rect(0, 0, canvasWidth, canvasHeight);
+		ctx.fillStyle = pat;
+		ctx.fill();}
+
     _0x7ac7be == true
       ? (_0x16b27b.globalAlpha = 0.6)
       : (_0x16b27b.globalAlpha = 1);
