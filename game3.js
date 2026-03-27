@@ -113,11 +113,17 @@ const imageBg = document.querySelector("#bg");
 var imageBgNew = new Image();
 
 imageBg.addEventListener('click', () => {
+  if (gameBackground) {
 imageBgNew.crossOrigin = 'anonymous';
 imageBgNew.src = "imgs/hex2.webp";
       imageBgNew.onload = function () {
         gameBackground = true;
+          imageBg.classList.add('active');
       };
+    } else {
+      imageBg.classList.remove('active');
+      gameBackground = false;
+    }
 });
 
   input.addEventListener('keydown', (e) => {
