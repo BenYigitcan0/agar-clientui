@@ -189,11 +189,27 @@ function rgbToHex(rgb) {
             bLength = e.target.value;
         };
 
+        var Feed = false;
         window.addEventListener("keydown", (e) => {
             if (e.keyCode == 89) {
               playGame();
+            }else if (e.keyCode == 81) {
+        Feed = true;
+                    setTimeout(fukherriteindapussie, imlost);
             }
           });
+                  window.addEventListener("key", (e) => {
+          if (event.keyCode == 87) {
+        Feed = false;
+    }
+  });
+  function fukherriteindapussie() {
+    if (Feed) {
+        window.onkeydown({keyCode: 87});
+        window.onkeyup({keyCode: 87});
+        setTimeout(fukherriteindapussie, imlost);
+    }
+}
 
   function _0x1d0b7d(
     _0x40b698,
