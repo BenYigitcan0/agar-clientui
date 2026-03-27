@@ -1462,10 +1462,10 @@ var imageBgNew;
 
     var gameBackground = true;
      if(gameBackground){
-		var pat = ctx.createPattern(imageBgNew, "repeat");
-		ctx.rect(0, 0, canvasWidth, canvasHeight);
-		ctx.fillStyle = pat;
-		ctx.fill();}
+		var pat = _0x16b27b.createPattern(imageBgNew, "repeat");
+		_0x16b27b.rect(0, 0, canvasWidth, canvasHeight);
+		_0x16b27b.fillStyle = pat;
+		_0x16b27b.fill();}
 
     _0x7ac7be == true
       ? (_0x16b27b.globalAlpha = 0.6)
