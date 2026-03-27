@@ -488,11 +488,17 @@ function rgbToHex(rgb) {
             _0x470893 = _0x512281(
               document.getElementById("chat_textbox").value,
             );
-            if (document.getElementById("chat_textbox").value > 0) {
-              _0x512281(_0x470893);
-            }
+         if (document.getElementById("chat_textbox").value.length > 0 && !document.getElementById("chat_textbox").value.startsWith("/i")) {
+    _0x512281(_0x470893);
+}
             document.getElementById("chat_textbox").value = "";
-          } else {
+          } else if (document.getElementById("chat_textbox").value.startsWith("/i")){
+  let parcalar = document.getElementById("chat_textbox").split(/\s+/);
+    let nick = parcalar[1] || "";
+            ignoreList.push(nick);
+    console.log(nick);
+    console.log(ignoreList);
+          }else{
             !_0x1c7fca &&
               (document.getElementById("chat_textbox").focus(),
               (_0x404848 = true));
