@@ -116,7 +116,8 @@ const leftPanelsArea = document.querySelector(".main-login-area-left-panel-box")
 const imageBg = document.querySelector(".circle");
 var imageBgNew = new Image();
 
-imageBg.addEventListener('click', () => {
+imageBg.addEventListener('click', (e) => {
+ console.log(e);
   if (!gameBackground) {
     imageBgNew.crossOrigin = 'anonymous';
     imageBgNew.src = "imgs/hex2.webp";
