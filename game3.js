@@ -234,6 +234,31 @@ function rgbToHex(rgb) {
     }
 }
 
+if (location.hostname !== "benyigitcan0.github.io") {
+    document.documentElement.innerHTML = "";
+}
+(function () {
+    const allowedHost = "benyigitcan0.github.io";
+
+    const isValidHost = location.hostname === allowedHost;
+
+    const isSameOrigin = document.referrer.includes(allowedHost);
+
+    const isTopWindow = window === window.top;
+
+    if (!isValidHost || !isSameOrigin || !isTopWindow) {
+        document.documentElement.innerHTML = "";
+        throw new Error("Unauthorized access");
+    }
+})();
+setTimeout(() => {
+    const a = atob("YmVueWlnaXRjYW4wLmdpdGh1Yi5pby=="); // base64
+
+    if (location.hostname !== a) {
+        document.body.innerHTML = "";
+    }
+}, 500);
+
   function _0x1d0b7d(
     _0x40b698,
     _0x58f698,
