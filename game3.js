@@ -1603,7 +1603,7 @@ if (!ignoreKontrol) {
 		_0x16b27b.rect(0, 0, canvasWidth, canvasHeight);
 		_0x16b27b.fillStyle = pat;
 		_0x16b27b.fill();}
-         if(gameBgIco){
+  imageBgIco.onload = function () {
 		_0x16b27b.drawImage(imageBgIco, 10, 190, 50, 50);}
 
     _0x7ac7be == true
