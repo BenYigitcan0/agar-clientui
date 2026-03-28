@@ -807,7 +807,7 @@ if (_0x404848) {
     
     switch (opcode) {
         case 16:
-            updateNodes3(view, offset);
+            updateNodes(view, offset);
             break;
         case 17:
             handleOpcode17(view, offset);
