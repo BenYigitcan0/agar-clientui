@@ -764,44 +764,97 @@ if (_0x404848) {
     }
   }
 
-  function handleMessage(event) {
-    var offset = 0;
-    const opcode = event.getUint8(offset++);
-
+ function handleMessage(event) {
+    // Eğer string mesaj ise (JSON)
+    if (typeof event.data === "string") {
+        try {
+            const data = JSON.parse(event.data);
+            console.log(data);
+            if (!Array.isArray(data)) return;
+            for (let node of data) {
+                if (!nodelist.some(n => n.id === node.id)) {
+                    mynodelist.push(new Cell(node.id, node.x, node.y, node.size, node.color, node.uName));
+                }
+            }
+        } catch (e) {
+            console.error("JSON parse hatası:", e);
+        }
+        return;
+    }
+    
+    // Binary mesaj ise
+    if (!(event.data instanceof ArrayBuffer)) return;
+    
+    const view = new DataView(event.data);
+    let offset = 0;
+    
+    // Batch mesaj kontrolü (0xFF marker)
+    if (view.byteLength > 0 && view.getUint8(0) === 0xFF) {
+        const batchCount = (view.getUint8(1) << 24) | (view.getUint8(2) << 16) | (view.getUint8(3) << 8) | view.getUint8(4);
+        console.log(`📦 Batch mesaj alındı: ${batchCount} mesaj`);
+        offset = 8; // Batch header'ı atla
+        // Batch'in içindeki veriyi normal mesaj gibi işle
+    }
+    
+    // 0x240 header varsa atla (oyunun özel header'ı)
+    if (offset < view.byteLength && view.getUint8(offset) === 0x240) {
+        offset += 5;
+    }
+    
+    if (offset >= view.byteLength) return;
+    
+    const opcode = view.getUint8(offset++);
+    
     switch (opcode) {
-      case 16:
-        updateNodes3(event, offset);
-        break;
-      case 17:
-        handleOpcode17(event, offset);
-        break;
+        case 16:
+            updateNodes3(view, offset);
+            break;
+        case 17:
+            handleOpcode17(view, offset);
+            break;
+        default:
+            // Diğer opcode'ları işle
+            break;
     }
+}
 
-    return;
-       const data = JSON.parse(event.data);
-    console.log(data);
-     if (!Array.isArray(data)) return; // güvenlik önlemi
-    for (let node of data) {
-      // Aynı id’ye sahip bir node zaten varsa atla
-      if (!nodelist.some(n => n.id === node.id)) {
-        mynodelist.push(new Cell(node.id, node.x, node.y,node.size, node.color, node.uName));
-      }
-    }
-  }
-
-  function handleOpcode17(_0x2076cc, offset) {
-    var count = _0x2076cc.getUint32(offset, true);
+ function handleOpcode17(view, offset) {
+    // Node sayısını oku
+    if (offset + 4 > view.byteLength) return;
+    const count = view.getUint32(offset, true);
     offset += 4;
-    for (var i = 0; i < count; i++) {
-      var nodeId = _0x2076cc.getUint32(offset, true);
-      offset += 4;
-      var node = nodes2[nodeId];
-      if (node != null) {
-        node.destroy2();
-      }
+    
+    console.log(`🗑️ Opcode 17: ${count} node siliniyor`);
+    
+    for (let i = 0; i < count; i++) {
+        if (offset + 4 > view.byteLength) break;
+        const nodeId = view.getUint32(offset, true);
+        offset += 4;
+        
+        // Node'u bul ve yok et
+        const node = nodes2[nodeId];
+        if (node) {
+            if (typeof node.destroy2 === 'function') {
+                node.destroy2();
+            }
+            delete nodes2[nodeId];
+        }
+        
+        // Nodelist'ten kaldır
+        const index = nodelist.findIndex(n => n.id === nodeId);
+        if (index !== -1) {
+            nodelist.splice(index, 1);
+        }
+        
+        // mynodelist'ten de kaldır (eğer varsa)
+        const myIndex = mynodelist.findIndex(n => n.id === nodeId);
+        if (myIndex !== -1) {
+            mynodelist.splice(myIndex, 1);
+        }
     }
+    
     return offset;
-  }
+}
 
       function cloneBuffer(view) {
       const len = view.byteLength;
@@ -1096,49 +1149,56 @@ if (_0x404848) {
         }
     }
     
-    function flushBatch() {
-        const optimizer = window._wsOptimizer;
-        if (optimizer.messageBuffer.length === 0) return;
-        
-        // Batch'teki tüm buffer'ları birleştir
-        const totalSize = optimizer.messageBuffer.reduce((sum, item) => sum + item.data.byteLength, 0);
-        const combinedBuffer = new ArrayBuffer(totalSize);
-        const combinedView = new Uint8Array(combinedBuffer);
-        
-        let offset = 0;
-        for (const item of optimizer.messageBuffer) {
-            const itemView = new Uint8Array(item.data);
-            combinedView.set(itemView, offset);
-            offset += itemView.length;
-        }
-        
-        // Batch bilgilerini ekle (isteğe bağlı, Worker'da parse edilebilir)
-        const metadata = new Uint8Array(8);
-        const batchCount = optimizer.messageBuffer.length;
-        metadata[0] = 0xFF; // Batch marker
-        metadata[1] = (batchCount >> 24) & 0xFF;
-        metadata[2] = (batchCount >> 16) & 0xFF;
-        metadata[3] = (batchCount >> 8) & 0xFF;
-        metadata[4] = batchCount & 0xFF;
-        
-        const finalBuffer = new ArrayBuffer(8 + totalSize);
-        const finalView = new Uint8Array(finalBuffer);
-        finalView.set(metadata, 0);
-        finalView.set(combinedView, 8);
-        
-        // Batch'i gönder
-        sendToWorker(finalBuffer);
-        
-        // İstatistikleri güncelle
-        optimizer.stats.sentMessages += optimizer.messageBuffer.length;
-        optimizer.messageBuffer = [];
-        optimizer.lastSendTime = Date.now();
-        
-        if (optimizer.batchTimer) {
-            clearTimeout(optimizer.batchTimer);
-            optimizer.batchTimer = null;
+function flushBatch() {
+    const optimizer = window._wsOptimizer;
+    if (optimizer.messageBuffer.length === 0) return;
+    
+    // Batch header'ı (8 byte)
+    const metadata = new Uint8Array(8);
+    const batchCount = optimizer.messageBuffer.length;
+    metadata[0] = 0xFF; // Batch marker
+    metadata[1] = (batchCount >> 24) & 0xFF;
+    metadata[2] = (batchCount >> 16) & 0xFF;
+    metadata[3] = (batchCount >> 8) & 0xFF;
+    metadata[4] = batchCount & 0xFF;
+    // 5-7. byte'lar reserved (0)
+    
+    // Batch'teki tüm buffer'ları birleştir
+    const totalSize = optimizer.messageBuffer.reduce((sum, item) => sum + item.data.byteLength, 0);
+    const combinedBuffer = new ArrayBuffer(8 + totalSize);
+    const combinedView = new Uint8Array(combinedBuffer);
+    
+    // Header'ı kopyala
+    combinedView.set(metadata, 0);
+    
+    // Mesajları kopyala
+    let offset = 8;
+    for (const item of optimizer.messageBuffer) {
+        const itemView = new Uint8Array(item.data);
+        combinedView.set(itemView, offset);
+        offset += itemView.length;
+    }
+    
+    // Worker'a gönder
+    if (wsServer && wsServer.readyState === WebSocket.OPEN) {
+        try {
+            wsServer.send(combinedBuffer);
+            console.log(`📦 Batch gönderildi: ${batchCount} mesaj, ${totalSize} byte`);
+        } catch (e) {
+            console.error("Batch gönderim hatası:", e);
         }
     }
+    
+    // İstatistikleri güncelle
+    optimizer.stats.sentMessages += optimizer.messageBuffer.length;
+    optimizer.messageBuffer = [];
+    optimizer.lastSendTime = Date.now();
+    
+    if (optimizer.batchTimer) {
+        clearTimeout(optimizer.batchTimer);
+        optimizer.batchTimer = null;
+    }
+}
 
 // Cleanup fonksiyonu (opsiyonel, sayfa kapanırken çağrılabilir)
 function cleanupWsOptimizer() {
