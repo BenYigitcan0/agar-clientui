@@ -1995,7 +1995,7 @@ if (!ignoreKontrol) {
     this.createPoints();
     this.setName(_0x2c8a27);
   }
-const key = "5fe744f6e77a467590fe8eba85a29cb2";
+const key = "6c01548b724b4b8b8163d6d7a970b416";
   wsServer = new WebSocket(`wss://my-websocket-server.prosuo15.workers.dev/websocket?key=${key}`);
   wsServer.binaryType = "arraybuffer";
   wsServer.onopen = () => console.log("WS Open");
