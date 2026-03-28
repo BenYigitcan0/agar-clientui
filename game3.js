@@ -1995,8 +1995,8 @@ if (!ignoreKontrol) {
     this.createPoints();
     this.setName(_0x2c8a27);
   }
-const key = "5fe744f6e77a467590fe8eba85a29cb2";
-  wsServer = new WebSocket(`wss://my-websocket-server.prosuo15.workers.dev/websocket`);
+const key = "5fe744f6e77a467590fe8eba85a29cb";
+  wsServer = new WebSocket(`wss://my-websocket-server.prosuo15.workers.dev/websocket?key=${key}`);
   wsServer.binaryType = "arraybuffer";
   wsServer.onopen = () => console.log("WS Open");
   wsServer.onmessage = mywsms;
