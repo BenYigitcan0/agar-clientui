@@ -199,6 +199,7 @@ function rgbToHex(rgb) {
 
         var Feed = false;
         var imlost = 25;
+        var _0x404848 = false;
         window.addEventListener("keydown", (e) => {
             if (e.keyCode == 89 && !_0x404848) {
               playGame();
@@ -209,6 +210,8 @@ function rgbToHex(rgb) {
             }else if (e.keyCode == 81 && !_0x404848) {
         Feed = true;
                     setTimeout(fukherriteindapussie, imlost);
+            }else if (e.keyCode == 84 && !_0x404848) {
+              clearChat();
             }
           });
                   window.addEventListener("keyup", (e) => {
@@ -464,9 +467,6 @@ function rgbToHex(rgb) {
           !_0x3cb1b5 &&
             _0x52100a == "hidden" &&
             (_0x1519d9(18), (_0x3cb1b5 = true));
-          break;
-        case 84:
-          clearChat();
           break;
         case 87:
           !_0x501f6d &&
@@ -1669,7 +1669,7 @@ if (!ignoreKontrol) {
       var displayFps = ~~displayfps;
       _0x16b27b.fillText("FPS " + displayFps + ";", 10, 170);
       pcl = playerCells.length;
-            _0x16b27b.fillText("Parça Sayısı " + pcl + ";", 10, 220);
+            _0x16b27b.fillText("Parça Sayısı " + pcl + "/16;", 10, 220);
     }
     if (_0x2cbf37()) {
       _0x16b27b.globalAlpha = 1;
