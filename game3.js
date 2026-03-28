@@ -1603,8 +1603,6 @@ if (!ignoreKontrol) {
 		_0x16b27b.rect(0, 0, canvasWidth, canvasHeight);
 		_0x16b27b.fillStyle = pat;
 		_0x16b27b.fill();}
-  imageBgIco.onload = function () {
-		_0x16b27b.drawImage(imageBgIco, 10, 190, 50, 50);}
 
     _0x7ac7be == true
       ? (_0x16b27b.globalAlpha = 0.6)
@@ -1677,8 +1675,10 @@ if (!ignoreKontrol) {
       _0x16b27b.fillText("Players " + Uplayers + ";", 10, 150);
       var displayFps = ~~displayfps;
       _0x16b27b.fillText("FPS " + displayFps + ";", 10, 170);
+               if(gameBgIco){
+		_0x16b27b.drawImage(imageBgIco, 10, 190, 50, 50);}
       pcl = playerCells.length;
-            _0x16b27b.fillText("Parça Sayısı " + pcl + "/16;", 10, 220);
+            _0x16b27b.fillText("Parça Sayısı " + pcl + "/16;", 10, 240);
     }
     if (_0x2cbf37()) {
       _0x16b27b.globalAlpha = 1;
