@@ -202,6 +202,10 @@ function rgbToHex(rgb) {
         window.addEventListener("keydown", (e) => {
             if (e.keyCode == 89) {
               playGame();
+            }else if (e.keyCode == 80) {
+              setInterval(() => {
+                playGame();
+              }, 1000/30);
             }else if (e.keyCode == 81) {
         Feed = true;
                     setTimeout(fukherriteindapussie, imlost);
