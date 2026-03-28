@@ -1701,7 +1701,7 @@ if (!ignoreKontrol) {
       var displayFps = ~~displayfps;
       _0x16b27b.fillText("FPS " + displayFps + ";", 10, 170);
                if(gameBgIco){
-		_0x16b27b.drawImage(imageBgIco, 10, 175, 70, 60);}
+		_0x16b27b.drawImage(imageBgIco, 0, 165, 70, 60);}
       pcl = playerCells.length;
             _0x16b27b.fillText("Parça Sayısı " + pcl + "/16;", 10, 240);
     }
