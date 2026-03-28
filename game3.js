@@ -210,9 +210,9 @@ function rgbToHex(rgb) {
             }else if (e.keyCode == 81 && !_0x404848) {
         Feed = true;
                     setTimeout(fukherriteindapussie, imlost);
-            }else if (e.keyCode == 84 && !_0x404848) {
-              clearChat();
-            }
+             }//else if (e.keyCode == 84 && !_0x404848) {
+            //   clearChat();
+            // }
           });
                   window.addEventListener("keyup", (e) => {
           if (e.keyCode == 87) {
