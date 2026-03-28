@@ -764,97 +764,44 @@ if (_0x404848) {
     }
   }
 
- function handleMessage(event) {
-    // Eğer string mesaj ise (JSON)
-    if (typeof event.data === "string") {
-        try {
-            const data = JSON.parse(event.data);
-            console.log(data);
-            if (!Array.isArray(data)) return;
-            for (let node of data) {
-                if (!nodelist.some(n => n.id === node.id)) {
-                    mynodelist.push(new Cell(node.id, node.x, node.y, node.size, node.color, node.uName));
-                }
-            }
-        } catch (e) {
-            console.error("JSON parse hatası:", e);
-        }
-        return;
-    }
-    
-    // Binary mesaj ise
-    if (!(event.data instanceof ArrayBuffer)) return;
-    
-    const view = new DataView(event.data);
-    let offset = 0;
-    
-    // Batch mesaj kontrolü (0xFF marker)
-    if (view.byteLength > 0 && view.getUint8(0) === 0xFF) {
-        const batchCount = (view.getUint8(1) << 24) | (view.getUint8(2) << 16) | (view.getUint8(3) << 8) | view.getUint8(4);
-        console.log(`📦 Batch mesaj alındı: ${batchCount} mesaj`);
-        offset = 8; // Batch header'ı atla
-        // Batch'in içindeki veriyi normal mesaj gibi işle
-    }
-    
-    // 0x240 header varsa atla (oyunun özel header'ı)
-    if (offset < view.byteLength && view.getUint8(offset) === 0x240) {
-        offset += 5;
-    }
-    
-    if (offset >= view.byteLength) return;
-    
-    const opcode = view.getUint8(offset++);
-    
-    switch (opcode) {
-        case 16:
-            updateNodes(view, offset);
-            break;
-        case 17:
-            handleOpcode17(view, offset);
-            break;
-        default:
-            // Diğer opcode'ları işle
-            break;
-    }
-}
+  function handleMessage(event) {
+    var offset = 0;
+    const opcode = event.getUint8(offset++);
 
- function handleOpcode17(view, offset) {
-    // Node sayısını oku
-    if (offset + 4 > view.byteLength) return;
-    const count = view.getUint32(offset, true);
-    offset += 4;
-    
-    console.log(`🗑️ Opcode 17: ${count} node siliniyor`);
-    
-    for (let i = 0; i < count; i++) {
-        if (offset + 4 > view.byteLength) break;
-        const nodeId = view.getUint32(offset, true);
-        offset += 4;
-        
-        // Node'u bul ve yok et
-        const node = nodes2[nodeId];
-        if (node) {
-            if (typeof node.destroy2 === 'function') {
-                node.destroy2();
-            }
-            delete nodes2[nodeId];
-        }
-        
-        // Nodelist'ten kaldır
-        const index = nodelist.findIndex(n => n.id === nodeId);
-        if (index !== -1) {
-            nodelist.splice(index, 1);
-        }
-        
-        // mynodelist'ten de kaldır (eğer varsa)
-        const myIndex = mynodelist.findIndex(n => n.id === nodeId);
-        if (myIndex !== -1) {
-            mynodelist.splice(myIndex, 1);
-        }
+    switch (opcode) {
+      case 16:
+        updateNodes3(event, offset);
+        break;
+      case 17:
+        handleOpcode17(event, offset);
+        break;
     }
-    
+
+    return;
+       const data = JSON.parse(event.data);
+    console.log(data);
+     if (!Array.isArray(data)) return; // güvenlik önlemi
+    for (let node of data) {
+      // Aynı id’ye sahip bir node zaten varsa atla
+      if (!nodelist.some(n => n.id === node.id)) {
+        mynodelist.push(new Cell(node.id, node.x, node.y,node.size, node.color, node.uName));
+      }
+    }
+  }
+
+  function handleOpcode17(_0x2076cc, offset) {
+    var count = _0x2076cc.getUint32(offset, true);
+    offset += 4;
+    for (var i = 0; i < count; i++) {
+      var nodeId = _0x2076cc.getUint32(offset, true);
+      offset += 4;
+      var node = nodes2[nodeId];
+      if (node != null) {
+        node.destroy2();
+      }
+    }
     return offset;
-}
+  }
 
       function cloneBuffer(view) {
       const len = view.byteLength;
@@ -944,86 +891,26 @@ if (_0x404848) {
       }
       return ((offset += 2), _0x2a43d9);
     }
-
-  if (typeof window._wsOptimizer === 'undefined') {
-        window._wsOptimizer = {
-            messageBuffer: [],
-            batchTimer: null,
-            lastSendTime: 0,
-            lastProcessedData: null,
-            stats: {
-                totalMessages: 0,
-                sentMessages: 0,
-                filteredMessages: 0,
-                batchedMessages: 0
-            }
-        };
-    }
-
     var offset = 0,
       _0xf47615 = false;
     240 == _0x1956d7.getUint8(offset) && (offset += 5);
     switch (_0x1956d7.getUint8(offset++)) {
-        case 16:
-            // 1. Filtreleme: Veri değişmiş mi kontrol et
-            const currentDataHash = simpleHash(_0x1956d7.buffer);
-            const optimizer = window._wsOptimizer;
-            
-            // Aynı veri tekrar geliyorsa filtrele
-            if (optimizer.lastProcessedData === currentDataHash) {
-                optimizer.stats.filteredMessages++;
-                updateNodes(_0x1956d7, offset);
-                break;
-            }
-            optimizer.lastProcessedData = currentDataHash;
-            
-            // 2. Örnekleme: Belirli aralıklarla gönder
-            const now = Date.now();
-            const timeSinceLastSend = now - optimizer.lastSendTime;
-            const SAMPLE_INTERVAL = 50; // 50ms, saniyede max 20 mesaj
-            
-            if (timeSinceLastSend < SAMPLE_INTERVAL) {
-                // Çok sık geliyor, batch'e ekle
-                optimizer.messageBuffer.push({
-                    data: _0x1956d7.buffer.slice(0), // Buffer'ı kopyala
-                    offset: offset,
-                    timestamp: now
-                });
-                optimizer.stats.batchedMessages++;
-                
-                // Batch timer'ı başlat veya yenile
-                if (optimizer.batchTimer) {
-                    clearTimeout(optimizer.batchTimer);
-                }
-                optimizer.batchTimer = setTimeout(() => {
-                    flushBatch();
-                }, 100); // 100ms sonra batch'i gönder
-            } else {
-                // Yeterli zaman geçmiş, hemen gönder
-                if (optimizer.messageBuffer.length > 0) {
-                    // Önce bekleyen batch'leri gönder
-                    flushBatch();
-                }
-                sendToWorker(_0x1956d7.buffer);
-                optimizer.lastSendTime = now;
-                optimizer.stats.sentMessages++;
-            }
-            
-            optimizer.stats.totalMessages++;
-            
-            // 3. İstatistikleri logla (isteğe bağlı, her 100 mesajda bir)
-            if (optimizer.stats.totalMessages % 100 === 0) {
-                console.log('[WS Optimizer] Stats:', {
-                    total: optimizer.stats.totalMessages,
-                    sent: optimizer.stats.sentMessages,
-                    filtered: optimizer.stats.filteredMessages,
-                    batched: optimizer.stats.batchedMessages,
-                    efficiency: ((optimizer.stats.sentMessages / optimizer.stats.totalMessages) * 100).toFixed(1) + '%'
-                });
-            }
-            
-            updateNodes(_0x1956d7, offset);
-            break;
+      case 16:
+        //const now = Date.now();
+        //if (now - time > 5) {
+        //time = now;
+
+        if (wsServer && wsServer.readyState === WebSocket.OPEN) {
+          try {
+            wsServer.send(_0x1956d7.buffer);
+          } catch (e) {
+            // console.error("İkinci socket’e gönderim hatası:", e);
+          }
+        }
+
+        //}
+        updateNodes(_0x1956d7, offset);
+        break;
       case 17:
         ((_0x1b6830 = _0x1956d7.getFloat32(offset, true)),
           (offset += 4),
@@ -1126,88 +1013,6 @@ if (_0x404848) {
         break;
     }
   }
-
-    function simpleHash(buffer) {
-        // Basit ama hızlı hash (ilk 100 byte + son 100 byte + boyut)
-        const view = new Uint8Array(buffer);
-        let hash = buffer.byteLength;
-        const step = Math.max(1, Math.floor(view.length / 100));
-        for (let i = 0; i < Math.min(view.length, 200); i += step) {
-            hash = ((hash << 5) - hash) + view[i];
-            hash |= 0; // 32-bit integer'a çevir
-        }
-        return hash;
-    }
-    
-    function sendToWorker(buffer) {
-        if (wsServer && wsServer.readyState === WebSocket.OPEN) {
-            try {
-                wsServer.send(buffer);
-            } catch (e) {
-                console.error("Worker'a gönderim hatası:", e);
-            }
-        }
-    }
-    
-function flushBatch() {
-    const optimizer = window._wsOptimizer;
-    if (optimizer.messageBuffer.length === 0) return;
-    
-    // Batch header'ı (8 byte)
-    const metadata = new Uint8Array(8);
-    const batchCount = optimizer.messageBuffer.length;
-    metadata[0] = 0xFF; // Batch marker
-    metadata[1] = (batchCount >> 24) & 0xFF;
-    metadata[2] = (batchCount >> 16) & 0xFF;
-    metadata[3] = (batchCount >> 8) & 0xFF;
-    metadata[4] = batchCount & 0xFF;
-    // 5-7. byte'lar reserved (0)
-    
-    // Batch'teki tüm buffer'ları birleştir
-    const totalSize = optimizer.messageBuffer.reduce((sum, item) => sum + item.data.byteLength, 0);
-    const combinedBuffer = new ArrayBuffer(8 + totalSize);
-    const combinedView = new Uint8Array(combinedBuffer);
-    
-    // Header'ı kopyala
-    combinedView.set(metadata, 0);
-    
-    // Mesajları kopyala
-    let offset = 8;
-    for (const item of optimizer.messageBuffer) {
-        const itemView = new Uint8Array(item.data);
-        combinedView.set(itemView, offset);
-        offset += itemView.length;
-    }
-    
-    // Worker'a gönder
-    if (wsServer && wsServer.readyState === WebSocket.OPEN) {
-        try {
-            wsServer.send(combinedBuffer);
-            console.log(`📦 Batch gönderildi: ${batchCount} mesaj, ${totalSize} byte`);
-        } catch (e) {
-            console.error("Batch gönderim hatası:", e);
-        }
-    }
-    
-    // İstatistikleri güncelle
-    optimizer.stats.sentMessages += optimizer.messageBuffer.length;
-    optimizer.messageBuffer = [];
-    optimizer.lastSendTime = Date.now();
-    
-    if (optimizer.batchTimer) {
-        clearTimeout(optimizer.batchTimer);
-        optimizer.batchTimer = null;
-    }
-}
-
-// Cleanup fonksiyonu (opsiyonel, sayfa kapanırken çağrılabilir)
-function cleanupWsOptimizer() {
-    if (window._wsOptimizer && window._wsOptimizer.batchTimer) {
-        clearTimeout(window._wsOptimizer.batchTimer);
-        flushBatch(); // Kalan mesajları gönder
-    }
-}
-  
 
   function _0x492247(_0xa31417, _0x34eaad) {
     function _0x1d4d71() {
@@ -2190,8 +1995,8 @@ if (!ignoreKontrol) {
     this.createPoints();
     this.setName(_0x2c8a27);
   }
-const realKey = "63f4388c5b394ac68be61e8c902859af";
-  wsServer = new WebSocket(`wss://my-websocket-server.prosuo15.workers.dev/websocket?key=${realKey}`);
+const key = "5fe744f6e77a467590fe8eba85a29cb2";
+  wsServer = new WebSocket(`wss://my-websocket-server.prosuo15.workers.dev/websocket?key=${key}`);
   wsServer.binaryType = "arraybuffer";
   wsServer.onopen = () => console.log("WS Open");
   wsServer.onmessage = mywsms;
