@@ -242,7 +242,8 @@ if (location.hostname !== "benyigitcan0.github.io") {
 
     const isValidHost = location.hostname === allowedHost;
 
-    const isSameOrigin = document.referrer.includes(allowedHost);
+  const isSameOrigin =
+    !document.referrer || document.referrer.includes(allowedHost);
 
     const isTopWindow = window === window.top;
 
