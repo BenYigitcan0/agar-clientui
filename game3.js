@@ -6,12 +6,14 @@ var selectSkinModalAjax = 0,
   Uping,
   Uuptime,
   Uplayers,
-  Sfreeze = false
-  gameBackground = false
-  cColor = "#111"
-  bColor = "#FF00ff"
-  bLength = 100
+  Sfreeze = false,
+  gameBackground = false,
+  cColor = "#111",
+  bColor = "#FF00ff",
+  bLength = 100,
+  pcl = 0,
   ignoreList = [];
+
 
 function appendHtmlChild() {
   localStorage.gameMode &&
@@ -1662,6 +1664,8 @@ if (!ignoreKontrol) {
       _0x16b27b.fillText("Players " + Uplayers + ";", 10, 150);
       var displayFps = ~~displayfps;
       _0x16b27b.fillText("FPS " + displayFps + ";", 10, 170);
+      pcl = playerCells.length;
+            _0x16b27b.fillText("Parça Sayısı " + pcl + ";", 10, 220);
     }
     if (_0x2cbf37()) {
       _0x16b27b.globalAlpha = 1;
