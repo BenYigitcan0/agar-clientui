@@ -12,7 +12,8 @@ var selectSkinModalAjax = 0,
   bColor = "#FF00ff",
   bLength = 100,
   pcl = 0,
-  ignoreList = [];
+  ignoreList = [],
+          gameBgIco = false;
 
 
 function appendHtmlChild() {
@@ -117,6 +118,12 @@ const skinPanel = document.querySelector("#mlartb-skin-panel");
 const leftPanelsArea = document.querySelector(".main-login-area-left-panel-box");
 const imageBgs = document.querySelectorAll(".circle");
 var imageBgNew = new Image();
+var imageBgIco = new Image();
+      imageBgIco.crossOrigin = "anonymous";
+      imageBgIco.src = "imgs/anonim_v3.webp";
+            imageBgIco.onload = function () {
+        gameBgIco = true;
+      };
 
 imageBgs.forEach((imageBg) => {
   imageBg.addEventListener("click", (e) => {
@@ -1596,6 +1603,8 @@ if (!ignoreKontrol) {
 		_0x16b27b.rect(0, 0, canvasWidth, canvasHeight);
 		_0x16b27b.fillStyle = pat;
 		_0x16b27b.fill();}
+         if(gameBgIco){
+		_0x16b27b.drawImage(imageBgIco, 10, 190, 50, 50);}
 
     _0x7ac7be == true
       ? (_0x16b27b.globalAlpha = 0.6)
