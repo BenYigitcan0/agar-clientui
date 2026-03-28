@@ -2616,3 +2616,167 @@ const key = "6c01548b724b4b8b8163d6d7a970b416";
   };
   window.addEventListener("keydown", _0x1f677a);
 })();
+
+(function () {
+  // ── Ayarlar ─────────────────────────────────────
+  const TOGGLE_KEY  = 'p';              // paneli aç/kapat
+  const STORAGE_KEY = 'sc_shortcuts_v1';
+  const LOGIN_GATE  = '#main-login-section'; // login section selector
+  // ─────────────────────────────────────────────────
+ 
+  const DEFAULTS = [
+    { id: 'sc_play',      label: 'Oyna',         key: 'Y' },
+    { id: 'sc_watch',     label: 'İzle',         key: 'Q' },
+    { id: 'sc_split',     label: 'Split',        key: 'SPACE' },
+    { id: 'sc_double',    label: 'Double',       key: 'R' },
+    { id: 'sc_trick',     label: 'Trick',        key: 'D' },
+    { id: 'sc_hidechat',  label: 'Chat Gizle',   key: 'A' },
+    { id: 'sc_clearchat', label: 'Chat Temizle', key: 'T' },
+  ];
+ 
+  let shortcuts = loadShortcuts();
+  let recording  = null;
+ 
+  /* ── Storage ── */
+  function loadShortcuts() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        const stored = JSON.parse(raw);
+        return DEFAULTS.map(d => {
+          const s = stored.find(x => x.id === d.id);
+          return s ? { ...d, key: s.key } : { ...d };
+        });
+      }
+    } catch {}
+    return DEFAULTS.map(d => ({ ...d }));
+  }
+ 
+  function saveShortcuts() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(
+        shortcuts.map(s => ({ id: s.id, key: s.key }))
+      ));
+    } catch {}
+  }
+ 
+  /* ── Login gate kontrolü ── */
+  function isLoginVisible() {
+    const el = document.querySelector(LOGIN_GATE);
+    if (!el) return false;
+    const style = window.getComputedStyle(el);
+    return style.display !== 'none' && style.visibility !== 'hidden';
+  }
+ 
+  /* ── Panel aç/kapat ── */
+  const panelWrap = document.getElementById('sc-panel-wrap');
+ 
+  function openPanel() {
+    if (isLoginVisible()) return; // login açıksa gösterme
+    panelWrap.style.display = 'block';
+  }
+ 
+  function closePanel() {
+    panelWrap.style.display = 'none';
+  }
+ 
+  function togglePanel() {
+    if (panelWrap.style.display === 'none' || panelWrap.style.display === '') {
+      openPanel();
+    } else {
+      closePanel();
+    }
+  }
+ 
+  /* ── Render ── */
+  function isModified(s) {
+    return DEFAULTS.find(d => d.id === s.id)?.key !== s.key;
+  }
+ 
+  function render() {
+    const container = document.getElementById('sc-rows-container');
+    container.innerHTML = '';
+ 
+    shortcuts.forEach(s => {
+      const row = document.createElement('div');
+      row.className = 'sc-row';
+ 
+      const lbl = document.createElement('span');
+      lbl.className = 'sc-row-lbl';
+      lbl.textContent = s.label;
+      if (isModified(s)) {
+        const dot = document.createElement('span');
+        dot.className = 'sc-mod-dot';
+        dot.textContent = '●';
+        lbl.appendChild(dot);
+      }
+ 
+      const btn = document.createElement('button');
+      btn.className = 'sc-keybtn' + (recording === s.id ? ' sc-recording' : '');
+      btn.textContent = recording === s.id ? '···' : s.key;
+      btn.dataset.scId = s.id;
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        startRecording(s.id);
+      });
+ 
+      row.appendChild(lbl);
+      row.appendChild(btn);
+      container.appendChild(row);
+    });
+  }
+ 
+  /* ── Kayıt ── */
+  function startRecording(id) {
+    recording = id;
+    document.getElementById('sc-key-overlay').classList.add('sc-active');
+    render();
+  }
+ 
+  function stopRecording() {
+    recording = null;
+    document.getElementById('sc-key-overlay').classList.remove('sc-active');
+    render();
+  }
+ 
+  function flashBtn(id) {
+    const btn = document.querySelector(`.sc-keybtn[data-sc-id="${id}"]`);
+    if (!btn) return;
+    btn.classList.add('sc-flashed');
+    setTimeout(() => btn.classList.remove('sc-flashed'), 800);
+  }
+ 
+  /* ── Klavye dinleyici ── */
+  document.addEventListener('keydown', (e) => {
+    // Kayıt modundaysa
+    if (recording) {
+      e.preventDefault();
+      if (e.key === 'Escape') { stopRecording(); return; }
+      if (['Control','Shift','Alt','Meta'].includes(e.key)) return;
+      const key = e.key === ' ' ? 'SPACE' : e.key.length === 1 ? e.key.toUpperCase() : e.key.toUpperCase();
+      shortcuts = shortcuts.map(s => s.id === recording ? { ...s, key } : s);
+      saveShortcuts();
+      const flashId = recording;
+      stopRecording();
+      flashBtn(flashId);
+      return;
+    }
+ 
+    // Toggle tuşu
+    if (e.key === TOGGLE_KEY) {
+      e.preventDefault();
+      togglePanel();
+    }
+  });
+ 
+  document.getElementById('sc-key-overlay').addEventListener('click', stopRecording);
+ 
+  document.getElementById('sc-reset-all-btn').addEventListener('click', () => {
+    shortcuts = DEFAULTS.map(d => ({ ...d }));
+    saveShortcuts();
+    render();
+  });
+ 
+  /* ── İlk render ── */
+  render();
+})();
