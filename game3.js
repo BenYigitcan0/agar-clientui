@@ -200,13 +200,13 @@ function rgbToHex(rgb) {
         var Feed = false;
         var imlost = 25;
         window.addEventListener("keydown", (e) => {
-            if (e.keyCode == 89) {
+            if (e.keyCode == 89 && !_0x404848) {
               playGame();
-            }else if (e.keyCode == 80) {
+            }else if (e.keyCode == 80 && !_0x404848) {
               setInterval(() => {
                 playGame();
               }, 1000/30);
-            }else if (e.keyCode == 81) {
+            }else if (e.keyCode == 81 && !_0x404848) {
         Feed = true;
                     setTimeout(fukherriteindapussie, imlost);
             }
